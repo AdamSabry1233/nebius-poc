@@ -1,0 +1,15 @@
+# HuggingFace ecosystem
+transformers
+datasets
+peft
+trl
+accelerate
+tokenizers
+
+# Evaluation
+lm-eval
+
+# Validation utilities
+psutil
+pyyaml
+numpy
