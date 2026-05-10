@@ -1,0 +1,1487 @@
+============================================================
+NEBIUS CLUSTER VALIDATION JOB
+============================================================
+Job ID:        132
+Nodes:         worker-[0-1]
+GPUs per node: 2
+Submit time:   2026-05-10 03:55:30 UTC
+============================================================
+
+Distributed environment:
+  MASTER_ADDR: worker-0
+  MASTER_PORT: 29500
+  WORLD_SIZE:  4
+  NCCL_IB_DISABLE: 0
+
+============================================================
+PHASE 1: Per-Node Validation (both nodes simultaneously)
+============================================================
+
+Starting per-node tests on: worker-0 (rank 0)
+
+==================================================
+TEST 01: GPU Health Check
+==================================================
+  [PASS] GPU count: 2 GPUs visible
+  [PASS] GPU 0 model: NVIDIA H200
+  [PASS] GPU 1 model: NVIDIA H200
+  [PASS] GPU 0 memory: 140.4 GB
+  [PASS] GPU 1 memory: 140.4 GB
+  [PASS] GPU 0 temperature: 28C
+  [PASS] GPU 1 temperature: 26C
+  [PASS] Driver version: 570.211.01
+  [INFO] GPU 0 current utilization: 0%
+  [INFO] GPU 1 current utilization: 0%
+--------------------------------------------------
+TEST 01 RESULT: PASS
+==================================================
+
+
+Starting per-node tests on: worker-1 (rank 1)
+
+==================================================
+TEST 01: GPU Health Check
+==================================================
+  [PASS] GPU count: 2 GPUs visible
+  [PASS] GPU 0 model: NVIDIA H200
+  [PASS] GPU 1 model: NVIDIA H200
+  [PASS] GPU 0 memory: 140.4 GB
+  [PASS] GPU 1 memory: 140.4 GB
+  [PASS] GPU 0 temperature: 25C
+  [PASS] GPU 1 temperature: 24C
+  [PASS] Driver version: 570.211.01
+  [INFO] GPU 0 current utilization: 0%
+  [INFO] GPU 1 current utilization: 0%
+--------------------------------------------------
+TEST 01 RESULT: PASS
+==================================================
+
+
+==================================================
+TEST 02: CUDA Functionality Check
+==================================================
+  [PASS] PyTorch 2.6.0+cu124 — CUDA available
+  [PASS] CUDA version: 12.4 (minimum 12.0)
+  [PASS] PyTorch sees 2 GPU(s)
+  [PASS] GPU 0 tensor computation correct: [5.0, 7.0, 9.0]
+  [PASS] GPU 1 tensor computation correct: [5.0, 7.0, 9.0]
+  [PASS] GPU 0 memory allocation: 1.00GB allocated and freed
+  [PASS] GPU 1 memory allocation: 1.00GB allocated and freed
+  [INFO] GPU 0: NVIDIA H200
+  [INFO] GPU 0: Compute capability 9.0
+  [INFO] GPU 0: Total memory 139.8GB
+  [INFO] GPU 0: Multiprocessors 132
+  [INFO] GPU 1: NVIDIA H200
+  [INFO] GPU 1: Compute capability 9.0
+  [INFO] GPU 1: Total memory 139.8GB
+  [INFO] GPU 1: Multiprocessors 132
+--------------------------------------------------
+TEST 02 RESULT: PASS
+==================================================
+
+
+==================================================
+TEST 03: NCCL Intra-Node Communication Check
+==================================================
+
+--- NVLink Status ---
+  [PASS] NVLink is active
+GPU 0: NVIDIA H200 (UUID: GPU-e052255b-8881-5264-eff8-e6d233162d4f)
+	 Link 0: 26.562 GB/s
+	 Link 1: 26.562 GB/s
+	 Link 2: 26.562 GB/s
+	 Link 3: 26.562 GB/s
+	 Link 4: 26.562 GB/s
+	 Link 5: 26.562 GB/s
+	 Link 6: 26.562 GB/s
+	 Link 7: 26.562 GB/s
+	 Link 8: 26.562 GB/s
+	 Link 9: 26.562 GB/s
+	 Link 10: 26.562 GB/s
+	 Link 11: 26.562 GB/s
+	 Link 12: 26.562 GB/s
+	 Link 13: 26.562 GB/s
+	 Link 14: 26.562 GB/s
+	 Link 15: 26.562 GB/s
+	 Link 16: 26.562 GB/s
+	 Link 17: 26.562 GB/s
+GPU 1: NVIDIA H200 (UUID: GPU-8d4a9b85-1d7f-8f0a-65e7-640bad371797)
+
+--- NVLink Speed ---
+  [INFO] NVLink capabilities:
+GPU 0: NVIDIA H200 (UUID: GPU-e052255b-8881-5264-eff8-e6d233162d4f)
+	 Link 0, P2P is supported: true
+	 Link 0, Access to system memory supported: true
+	 Link 0, P2P atomics supported: true
+	 Link 0, System memory atomics supported: true
+	 Link 0, SLI is supported: true
+	 Link 0, Link is supported: true
+	 Link 1, P2P is supported: true
+	 Link 1, Access to system memory supported: true
+	 Link 1, P2P atomics supported: true
+
+--- NCCL AllReduce Bandwidth Test ---
+  [INFO] Testing NCCL across 2 GPUs on this node
+  [INFO] Running warmup to initialize CUDA transfer path...
+  [INFO] Warmup complete — starting timed bandwidth tests
+  [PASS] 100MB tensor: 294.0 GB/s
+  [PASS] 500MB tensor: 319.5 GB/s
+  [PASS] 1024MB tensor: 322.7 GB/s
+  NCCL intra-node bandwidth: PASS
+
+==================================================
+TEST 02: CUDA Functionality Check
+==================================================
+  [PASS] PyTorch 2.6.0+cu124 — CUDA available
+  [PASS] CUDA version: 12.4 (minimum 12.0)
+  [PASS] PyTorch sees 2 GPU(s)
+  [PASS] GPU 0 tensor computation correct: [5.0, 7.0, 9.0]
+  [PASS] GPU 1 tensor computation correct: [5.0, 7.0, 9.0]
+  [PASS] GPU 0 memory allocation: 1.00GB allocated and freed
+  [PASS] GPU 1 memory allocation: 1.00GB allocated and freed
+  [INFO] GPU 0: NVIDIA H200
+  [INFO] GPU 0: Compute capability 9.0
+  [INFO] GPU 0: Total memory 139.8GB
+  [INFO] GPU 0: Multiprocessors 132
+  [INFO] GPU 1: NVIDIA H200
+  [INFO] GPU 1: Compute capability 9.0
+  [INFO] GPU 1: Total memory 139.8GB
+  [INFO] GPU 1: Multiprocessors 132
+--------------------------------------------------
+TEST 02 RESULT: PASS
+==================================================
+
+
+--- GPU Peer-to-Peer Access ---
+
+==================================================
+TEST 03: NCCL Intra-Node Communication Check
+==================================================
+
+--- NVLink Status ---
+  [PASS] NVLink is active
+GPU 0: NVIDIA H200 (UUID: GPU-972252c4-0f6b-baa5-8bdf-286c9dff9200)
+	 Link 0: 26.562 GB/s
+	 Link 1: 26.562 GB/s
+	 Link 2: 26.562 GB/s
+	 Link 3: 26.562 GB/s
+	 Link 4: 26.562 GB/s
+	 Link 5: 26.562 GB/s
+	 Link 6: 26.562 GB/s
+	 Link 7: 26.562 GB/s
+	 Link 8: 26.562 GB/s
+	 Link 9: 26.562 GB/s
+	 Link 10: 26.562 GB/s
+	 Link 11: 26.562 GB/s
+	 Link 12: 26.562 GB/s
+	 Link 13: 26.562 GB/s
+	 Link 14: 26.562 GB/s
+	 Link 15: 26.562 GB/s
+	 Link 16: 26.562 GB/s
+	 Link 17: 26.562 GB/s
+GPU 1: NVIDIA H200 (UUID: GPU-5163057a-0ffd-67f2-bf55-781a8055b493)
+
+--- NVLink Speed ---
+  [INFO] NVLink capabilities:
+GPU 0: NVIDIA H200 (UUID: GPU-972252c4-0f6b-baa5-8bdf-286c9dff9200)
+	 Link 0, P2P is supported: true
+	 Link 0, Access to system memory supported: true
+	 Link 0, P2P atomics supported: true
+	 Link 0, System memory atomics supported: true
+	 Link 0, SLI is supported: true
+	 Link 0, Link is supported: true
+	 Link 1, P2P is supported: true
+	 Link 1, Access to system memory supported: true
+	 Link 1, P2P atomics supported: true
+
+--- NCCL AllReduce Bandwidth Test ---
+  [PASS] GPU 0 can directly access GPU 1 via P2P
+  [PASS] GPU 1 can directly access GPU 0 via P2P
+
+--------------------------------------------------
+TEST 03 RESULT: PASS
+==================================================
+
+  [INFO] Testing NCCL across 2 GPUs on this node
+  [INFO] Running warmup to initialize CUDA transfer path...
+  [INFO] Warmup complete — starting timed bandwidth tests
+  [PASS] 100MB tensor: 298.4 GB/s
+  [PASS] 500MB tensor: 317.8 GB/s
+  [PASS] 1024MB tensor: 322.8 GB/s
+  NCCL intra-node bandwidth: PASS
+
+--- GPU Peer-to-Peer Access ---
+  [PASS] GPU 0 can directly access GPU 1 via P2P
+  [PASS] GPU 1 can directly access GPU 0 via P2P
+
+--------------------------------------------------
+TEST 03 RESULT: PASS
+==================================================
+
+
+==================================================
+TEST 05: Storage & Filesystem Benchmark
+==================================================
+
+--- HOME Storage: /home/adam ---
+  [PASS] home (/home/adam) is accessible
+  [INFO] home: 3573.7GB free of 3660.5GB (2.4% used)
+  [PASS] home write: 1.03 GB/s (minimum 0.3 GB/s)
+  [PASS] home read:  0.87 GB/s (minimum 0.5 GB/s)
+  [INFO] home small file writes: 939 files/sec
+  [INFO] home small file reads:  1589 files/sec
+
+--- DATA Storage: /mnt/data ---
+  [PASS] data (/mnt/data) is accessible
+  [INFO] data: 20480.0GB free of 20480.0GB (0.0% used)
+  [PASS] data write: 0.52 GB/s (minimum 0.3 GB/s)
+  [PASS] data read:  1.16 GB/s (minimum 0.5 GB/s)
+  [INFO] data small file writes: 277 files/sec
+  [INFO] data small file reads:  498 files/sec
+
+--- TMP Storage: /tmp ---
+  [PASS] tmp (/tmp) is accessible
+  [INFO] tmp: 464.9GB free of 494.9GB (6.1% used)
+  [PASS] tmp write: 0.27 GB/s (minimum 0.1 GB/s)
+  [PASS] tmp read:  1.93 GB/s (minimum 0.3 GB/s)
+  [INFO] tmp small file writes: 19104 files/sec
+  [INFO] tmp small file reads:  46670 files/sec
+
+--- MEMORY Storage: /mnt/memory ---
+  [PASS] memory (/mnt/memory) is accessible
+  [INFO] memory: 1438.0GB free of 1438.0GB (0.0% used)
+  [PASS] memory write: 2.50 GB/s (minimum 1.0 GB/s)
+  [PASS] memory read:  1.99 GB/s (minimum 1.0 GB/s)
+  [INFO] memory small file writes: 29107 files/sec
+  [INFO] memory small file reads:  50087 files/sec
+
+--- Checkpoint Write Simulation ---
+  [INFO] 500MB checkpoint write: 1.00s at 0.50 GB/s
+  [PASS] Checkpoint write time acceptable (1.0s < 30s)
+
+--------------------------------------------------
+TEST 05 RESULT: PASS
+==================================================
+
+
+==================================================
+TEST 05: Storage & Filesystem Benchmark
+==================================================
+
+--- HOME Storage: /home/adam ---
+  [PASS] home (/home/adam) is accessible
+  [INFO] home: 3572.7GB free of 3660.5GB (2.4% used)
+  [PASS] home write: 1.07 GB/s (minimum 0.3 GB/s)
+  [PASS] home read:  0.89 GB/s (minimum 0.5 GB/s)
+  [INFO] home small file writes: 1206 files/sec
+  [INFO] home small file reads:  3256 files/sec
+
+--- DATA Storage: /mnt/data ---
+  [PASS] data (/mnt/data) is accessible
+  [INFO] data: 20479.8GB free of 20480.0GB (0.0% used)
+  [PASS] data write: 0.50 GB/s (minimum 0.3 GB/s)
+  [PASS] data read:  1.20 GB/s (minimum 0.5 GB/s)
+  [INFO] data small file writes: 278 files/sec
+  [INFO] data small file reads:  499 files/sec
+
+--- TMP Storage: /tmp ---
+  [PASS] tmp (/tmp) is accessible
+  [INFO] tmp: 465.0GB free of 494.9GB (6.0% used)
+  [PASS] tmp write: 0.27 GB/s (minimum 0.1 GB/s)
+  [PASS] tmp read:  1.95 GB/s (minimum 0.3 GB/s)
+  [INFO] tmp small file writes: 19262 files/sec
+  [INFO] tmp small file reads:  45791 files/sec
+
+--- MEMORY Storage: /mnt/memory ---
+  [PASS] memory (/mnt/memory) is accessible
+  [INFO] memory: 1438.0GB free of 1438.0GB (0.0% used)
+  [PASS] memory write: 2.41 GB/s (minimum 1.0 GB/s)
+  [PASS] memory read:  1.90 GB/s (minimum 1.0 GB/s)
+  [INFO] memory small file writes: 28160 files/sec
+  [INFO] memory small file reads:  48829 files/sec
+
+--- Checkpoint Write Simulation ---
+  [INFO] 500MB checkpoint write: 0.99s at 0.50 GB/s
+  [PASS] Checkpoint write time acceptable (1.0s < 30s)
+
+--------------------------------------------------
+TEST 05 RESULT: PASS
+==================================================
+
+
+==================================================
+TEST 06: CPU & RAM Check
+==================================================
+
+--- CPU Checks ---
+  [INFO] CPU model: Intel(R) Xeon(R) Platinum 8468
+  [INFO] Architecture: x86_64
+  [INFO] OS: Linux-6.11.0-1016-nvidia-x86_64-with-glibc2.39
+  [INFO] Physical cores: 64
+  [INFO] Logical cores (with hyperthreading): 128
+  [INFO] os.cpu_count(): 128
+  [INFO] multiprocessing.cpu_count(): 128
+  [PASS] CPU cores: 64 (minimum 32)
+  [INFO] CPU frequency: 2100 MHz current
+  [INFO] CPU frequency: 0 MHz maximum
+  [PASS] CPU frequency acceptable
+  [INFO] Overall CPU utilization: 0.3%
+  [PASS] CPU has sufficient headroom for data loading
+
+--- RAM Checks ---
+  [INFO] Total RAM:     1574.8 GB
+  [INFO] Used RAM:      21.7 GB (1.4%)
+  [INFO] Available RAM: 1553.1 GB
+  [PASS] Total RAM: 1574.8GB (minimum 400GB)
+  [PASS] Free RAM: 1553.1GB (minimum 200GB)
+  [INFO] Swap total: 0.0 GB
+  [INFO] Swap used:  0.0 GB (0.0%)
+  [PASS] Swap usage acceptable: 0.0%
+  [INFO] Allocating 2GB array for bandwidth test...
+  [PASS] RAM bandwidth: 80.0 GB/s (minimum 60 GB/s)
+
+--- DataLoader Simulation ---
+  [INFO] 8 DataLoader workers completed in 0.039s
+  [INFO] Average worker preprocessing time: 25.0ms
+  [PASS] DataLoader simulation: 8 workers completed in 0.04s
+
+--------------------------------------------------
+TEST 06 RESULT: PASS
+==================================================
+
+
+==================================================
+TEST 06: CPU & RAM Check
+==================================================
+
+--- CPU Checks ---
+  [INFO] CPU model: Intel(R) Xeon(R) Platinum 8468
+  [INFO] Architecture: x86_64
+  [INFO] OS: Linux-6.11.0-1016-nvidia-x86_64-with-glibc2.39
+  [INFO] Physical cores: 64
+  [INFO] Logical cores (with hyperthreading): 128
+  [INFO] os.cpu_count(): 128
+  [INFO] multiprocessing.cpu_count(): 128
+  [PASS] CPU cores: 64 (minimum 32)
+  [INFO] CPU frequency: 2100 MHz current
+  [INFO] CPU frequency: 0 MHz maximum
+  [PASS] CPU frequency acceptable
+  [INFO] Overall CPU utilization: 0.1%
+  [PASS] CPU has sufficient headroom for data loading
+
+--- RAM Checks ---
+  [INFO] Total RAM:     1574.8 GB
+  [INFO] Used RAM:      20.4 GB (1.3%)
+  [INFO] Available RAM: 1554.4 GB
+  [PASS] Total RAM: 1574.8GB (minimum 400GB)
+  [PASS] Free RAM: 1554.4GB (minimum 200GB)
+  [INFO] Swap total: 0.0 GB
+  [INFO] Swap used:  0.0 GB (0.0%)
+  [PASS] Swap usage acceptable: 0.0%
+  [INFO] Allocating 2GB array for bandwidth test...
+  [PASS] RAM bandwidth: 79.5 GB/s (minimum 60 GB/s)
+
+--- DataLoader Simulation ---
+  [INFO] 8 DataLoader workers completed in 0.039s
+  [INFO] Average worker preprocessing time: 24.6ms
+  [PASS] DataLoader simulation: 8 workers completed in 0.04s
+
+--------------------------------------------------
+TEST 06 RESULT: PASS
+==================================================
+
+
+==================================================
+TEST 08: GPU Stress / Burn Test (30 seconds)
+Note: Limited to 30s for shared cluster
+==================================================
+
+--- Pre-Stress Baseline ---
+  [INFO] Recording pre-stress baseline...
+  [INFO] GPU 0 baseline: temp=28C, clock=345MHz, util=0%
+  [INFO] GPU 1 baseline: temp=26C, clock=345MHz, util=0%
+
+--- Running 30s Stress Test ---
+  [INFO] Starting GPU stress and monitoring simultaneously
+  [INFO] Stressing 2 GPU(s) for 30 seconds
+  [INFO] Using matrix multiplication (same as transformer training)
+
+  [INFO] Stress test complete — analyzing results
+
+--- Stress Test Analysis ---
+
+  --- GPU 0 Stress Analysis ---
+  [INFO] Temperature: avg=49.7C, max=60.0C
+  [INFO] Clock speed: avg=1334MHz, min=345MHz
+  [INFO] Utilization: avg=81.2%
+  [INFO] Peak power:  694.8W
+  [PASS] GPU 0 temperature stable: max 60C (limit 90C)
+  [WARN] GPU 0 possible throttling: clock dropped 82.6% from peak
+  [INFO] GPU 0 average clock: 1334MHz
+  [INFO] GPU 0 minimum clock: 345MHz (idle clock captured during monitoring)
+  [PASS] GPU 0 utilization: 81.2%
+  [INFO] Compute throughput: 639.8 TFLOPS (17458 matmul operations)
+  [PASS] GPU 0 compute throughput: 639.8 TFLOPS (minimum 50.0)
+
+  --- GPU 1 Stress Analysis ---
+  [INFO] Temperature: avg=47.8C, max=56.0C
+  [INFO] Clock speed: avg=1324MHz, min=345MHz
+  [INFO] Utilization: avg=81.2%
+  [INFO] Peak power:  692.4W
+  [PASS] GPU 1 temperature stable: max 56C (limit 90C)
+  [WARN] GPU 1 possible throttling: clock dropped 82.6% from peak
+  [INFO] GPU 1 average clock: 1324MHz
+  [INFO] GPU 1 minimum clock: 345MHz (idle clock captured during monitoring)
+  [PASS] GPU 1 utilization: 81.2%
+  [INFO] Compute throughput: 631.5 TFLOPS (17233 matmul operations)
+  [PASS] GPU 1 compute throughput: 631.5 TFLOPS (minimum 50.0)
+
+--- Post-Stress Recovery ---
+
+  [INFO] Waiting 10 seconds for GPU cooldown...
+  [INFO] GPU 0 post-stress: temp=41C, util=0%
+  [PASS] GPU 0 cooling normally
+  [INFO] GPU 1 post-stress: temp=35C, util=0%
+  [PASS] GPU 1 cooling normally
+
+--------------------------------------------------
+TEST 08 RESULT: PASS
+==================================================
+
+
+==================================================
+TEST 09: ECC Memory & Xid Error Monitoring
+==================================================
+
+--- ECC Mode Check ---
+  [PASS] GPU 0: ECC mode enabled
+  [PASS] GPU 1: ECC mode enabled
+
+--- Volatile ECC Errors (current session) ---
+
+  GPU 0:
+    Corrected errors:   0
+    Uncorrected errors: 0
+    [PASS] No corrected ECC errors
+    [PASS] No uncorrected ECC errors
+
+  GPU 1:
+    Corrected errors:   0
+    Uncorrected errors: 0
+    [PASS] No corrected ECC errors
+    [PASS] No uncorrected ECC errors
+
+--- Aggregate ECC Errors (since reboot) ---
+  [INFO] GPU 0 aggregate corrected errors: 0
+  [INFO] GPU 1 aggregate corrected errors: 0
+  [PASS] GPU 0: no aggregate uncorrected errors
+  [PASS] GPU 1: no aggregate uncorrected errors
+
+--- Retired Memory Pages ---
+
+--- Xid Error Check (kernel log) ---
+  [PASS] No Xid errors found in kernel log
+
+--- GPU Memory Row Remapping ---
+  [INFO] GPU 0: correctable=0, uncorrectable=0, pending=No, failure=No
+  [PASS] GPU 0: no row remapping failures
+  [INFO] GPU 1: correctable=0, uncorrectable=0, pending=No, failure=No
+  [PASS] GPU 1: no row remapping failures
+
+--------------------------------------------------
+TEST 09 RESULT: PASS
+==================================================
+
+
+==================================================
+TEST 08: GPU Stress / Burn Test (30 seconds)
+Note: Limited to 30s for shared cluster
+==================================================
+
+--- Pre-Stress Baseline ---
+  [INFO] Recording pre-stress baseline...
+  [INFO] GPU 0 baseline: temp=25C, clock=345MHz, util=0%
+  [INFO] GPU 1 baseline: temp=24C, clock=345MHz, util=0%
+
+--- Running 30s Stress Test ---
+  [INFO] Starting GPU stress and monitoring simultaneously
+  [INFO] Stressing 2 GPU(s) for 30 seconds
+  [INFO] Using matrix multiplication (same as transformer training)
+
+  [INFO] Stress test complete — analyzing results
+
+--- Stress Test Analysis ---
+
+  --- GPU 0 Stress Analysis ---
+  [INFO] Temperature: avg=48.9C, max=59.0C
+  [INFO] Clock speed: avg=1352MHz, min=345MHz
+  [INFO] Utilization: avg=81.4%
+  [INFO] Peak power:  692.0W
+  [PASS] GPU 0 temperature stable: max 59C (limit 90C)
+  [WARN] GPU 0 possible throttling: clock dropped 82.6% from peak
+  [INFO] GPU 0 average clock: 1352MHz
+  [INFO] GPU 0 minimum clock: 345MHz (idle clock captured during monitoring)
+  [PASS] GPU 0 utilization: 81.4%
+  [INFO] Compute throughput: 644.6 TFLOPS (17590 matmul operations)
+  [PASS] GPU 0 compute throughput: 644.6 TFLOPS (minimum 50.0)
+
+  --- GPU 1 Stress Analysis ---
+  [INFO] Temperature: avg=45.6C, max=54.0C
+  [INFO] Clock speed: avg=1332MHz, min=345MHz
+  [INFO] Utilization: avg=80.8%
+  [INFO] Peak power:  695.7W
+  [PASS] GPU 1 temperature stable: max 54C (limit 90C)
+  [WARN] GPU 1 possible throttling: clock dropped 82.6% from peak
+  [INFO] GPU 1 average clock: 1332MHz
+  [INFO] GPU 1 minimum clock: 345MHz (idle clock captured during monitoring)
+  [PASS] GPU 1 utilization: 80.8%
+  [INFO] Compute throughput: 637.4 TFLOPS (17392 matmul operations)
+  [PASS] GPU 1 compute throughput: 637.4 TFLOPS (minimum 50.0)
+
+--- Post-Stress Recovery ---
+
+  [INFO] Waiting 10 seconds for GPU cooldown...
+  [INFO] GPU 0 post-stress: temp=38C, util=0%
+  [PASS] GPU 0 cooling normally
+  [INFO] GPU 1 post-stress: temp=33C, util=0%
+  [PASS] GPU 1 cooling normally
+
+--------------------------------------------------
+TEST 08 RESULT: PASS
+==================================================
+
+
+==================================================
+TEST 09: ECC Memory & Xid Error Monitoring
+==================================================
+
+--- ECC Mode Check ---
+  [PASS] GPU 0: ECC mode enabled
+  [PASS] GPU 1: ECC mode enabled
+
+--- Volatile ECC Errors (current session) ---
+
+  GPU 0:
+    Corrected errors:   0
+    Uncorrected errors: 0
+    [PASS] No corrected ECC errors
+    [PASS] No uncorrected ECC errors
+
+  GPU 1:
+    Corrected errors:   0
+    Uncorrected errors: 0
+    [PASS] No corrected ECC errors
+    [PASS] No uncorrected ECC errors
+
+--- Aggregate ECC Errors (since reboot) ---
+  [INFO] GPU 0 aggregate corrected errors: 0
+  [INFO] GPU 1 aggregate corrected errors: 0
+  [PASS] GPU 0: no aggregate uncorrected errors
+  [PASS] GPU 1: no aggregate uncorrected errors
+
+--- Retired Memory Pages ---
+
+--- Xid Error Check (kernel log) ---
+  [PASS] No Xid errors found in kernel log
+
+--- GPU Memory Row Remapping ---
+  [INFO] GPU 0: correctable=0, uncorrectable=0, pending=No, failure=No
+  [PASS] GPU 0: no row remapping failures
+  [INFO] GPU 1: correctable=0, uncorrectable=0, pending=No, failure=No
+  [PASS] GPU 1: no row remapping failures
+
+--------------------------------------------------
+TEST 09 RESULT: PASS
+==================================================
+
+
+==================================================
+TEST 10: Environment Consistency Check
+==================================================
+
+--- Node Identity ---
+
+  [INFO] Hostname:    worker-0
+  [INFO] RANK:        0
+  [INFO] LOCAL_RANK:  0
+  [INFO] SLURM_NODEID:0
+
+--- OS Version ---
+  [INFO] OS:      PRETTY_NAME="Ubuntu 24.04.3 LTS"
+  [INFO] Kernel:  6.11.0-1016-nvidia
+  [INFO] Arch:    x86_64
+  [PASS] OS info collected — compare across nodes in log
+
+--- CUDA Version ---
+  [INFO] NVCC: Cuda compilation tools, release 12.9, V12.9.86
+  [INFO] PyTorch CUDA: 12.4
+  [INFO] cuDNN version: 90100
+  [PASS] CUDA versions collected — compare across nodes
+
+--- Python Version ---
+  [INFO] Python version: 3.12.3
+  [INFO] Implementation: CPython
+  [INFO] Python path:    /home/adam/nebius-env/bin/python3
+  [PASS] Python 3.12.3 meets minimum requirement (3.10+)
+
+--- PyTorch Version ---
+  [INFO] PyTorch version:  2.6.0+cu124
+  [INFO] CUDA available:   True
+  [INFO] CUDA version:     12.4
+  [INFO] cuDNN enabled:    True
+  [INFO] cuDNN version:    90100
+  [PASS] PyTorch is a release build
+  [INFO] Build config hash: bb7eefb8
+  [INFO] (hashes must match across all nodes)
+  [PASS] PyTorch info collected — compare across nodes
+
+--- Key Package Versions ---
+  [INFO] transformers: 5.8.0
+  [INFO] peft: 0.19.1
+  [INFO] trl: 1.4.0
+  [INFO] accelerate: 1.13.0
+  [INFO] datasets: 4.8.5
+  [INFO] tokenizers: 0.22.2
+  [INFO] numpy: 2.4.4
+  [INFO] psutil: 7.2.2
+
+  [INFO] Environment hash: 7c44c529
+  [INFO] (hashes must match across all nodes)
+  [PASS] All required packages installed
+
+--- NCCL Version ---
+  [INFO] NCCL version: (2, 21, 5)
+  [PASS] NCCL version collected — compare across nodes
+
+--- Environment Variables ---
+  Required variables:
+    [INFO] MASTER_ADDR=worker-0
+    [INFO] MASTER_PORT=29500
+    [INFO] WORLD_SIZE=4
+    [INFO] RANK=0
+    [INFO] LOCAL_RANK=0
+
+  Optional variables:
+    [INFO] NCCL_IB_DISABLE=0
+    [INFO] NCCL_DEBUG=INFO
+    [INFO] NCCL_SOCKET_IFNAME=not set
+    [INFO] CUDA_VISIBLE_DEVICES=0,1
+    [INFO] OMP_NUM_THREADS=not set
+    [INFO] TOKENIZERS_PARALLELISM=not set
+
+  [PASS] Environment variables collected — compare across nodes
+
+--- Filesystem Consistency ---
+  [INFO] Relevant mounts:
+    jail                                                                               2.0T   47G  2.0T   3% /run/nvidia/driver/mnt/jail
+    cloud-metadata                                                                    1008G   20K 1008G   1% /run/nvidia/driver/mnt/cloud-metadata
+    jail-submount-data                                                                  20T     0   20T   0% /run/nvidia/driver/mnt/jail-submount-data
+    tmpfs                                                                              1.5T     0  1.5T   0% /mnt/memory
+    jail-submount-data                                                                  20T     0   20T   0% /mnt/data
+    nfs-server.nfs-system.svc.cluster.local:/pvc-b01ff436-992a-492f-978e-6aa3f8f47dda  3.6T   87G  3.5T   3% /home
+    /dev/vdc                                                                           915G  9.8G  905G   2% /mnt/image-storage
+    /dev/vdd                                                                          1006G   28K 1006G   1% /mnt/local-data
+  [PASS] Can write to shared /home filesystem
+  [PASS] /mnt/data accessible: 20480.0GB free
+
+--- GPU Driver Consistency ---
+  [INFO] GPU 0: driver=570.211.01, model=NVIDIA H200
+  [INFO] GPU 1: driver=570.211.01, model=NVIDIA H200
+  [PASS] Driver info collected — compare across nodes
+
+--------------------------------------------------
+Node: worker-0 (rank 0)
+TEST 10 RESULT: PASS
+==================================================
+
+
+==================================================
+TEST 10: Environment Consistency Check
+==================================================
+
+--- Node Identity ---
+
+  [INFO] Hostname:    worker-1
+  [INFO] RANK:        1
+  [INFO] LOCAL_RANK:  0
+  [INFO] SLURM_NODEID:1
+
+--- OS Version ---
+  [INFO] OS:      PRETTY_NAME="Ubuntu 24.04.3 LTS"
+  [INFO] Kernel:  6.11.0-1016-nvidia
+  [INFO] Arch:    x86_64
+  [PASS] OS info collected — compare across nodes in log
+
+--- CUDA Version ---
+  [INFO] NVCC: Cuda compilation tools, release 12.9, V12.9.86
+  [INFO] PyTorch CUDA: 12.4
+  [INFO] cuDNN version: 90100
+  [PASS] CUDA versions collected — compare across nodes
+
+--- Python Version ---
+  [INFO] Python version: 3.12.3
+  [INFO] Implementation: CPython
+  [INFO] Python path:    /home/adam/nebius-env/bin/python3
+  [PASS] Python 3.12.3 meets minimum requirement (3.10+)
+
+--- PyTorch Version ---
+  [INFO] PyTorch version:  2.6.0+cu124
+  [INFO] CUDA available:   True
+  [INFO] CUDA version:     12.4
+  [INFO] cuDNN enabled:    True
+  [INFO] cuDNN version:    90100
+  [PASS] PyTorch is a release build
+  [INFO] Build config hash: bb7eefb8
+  [INFO] (hashes must match across all nodes)
+  [PASS] PyTorch info collected — compare across nodes
+
+--- Key Package Versions ---
+  [INFO] transformers: 5.8.0
+  [INFO] peft: 0.19.1
+  [INFO] trl: 1.4.0
+  [INFO] accelerate: 1.13.0
+  [INFO] datasets: 4.8.5
+  [INFO] tokenizers: 0.22.2
+  [INFO] numpy: 2.4.4
+  [INFO] psutil: 7.2.2
+
+  [INFO] Environment hash: 7c44c529
+  [INFO] (hashes must match across all nodes)
+  [PASS] All required packages installed
+
+--- NCCL Version ---
+  [INFO] NCCL version: (2, 21, 5)
+  [PASS] NCCL version collected — compare across nodes
+
+--- Environment Variables ---
+  Required variables:
+    [INFO] MASTER_ADDR=worker-0
+    [INFO] MASTER_PORT=29500
+    [INFO] WORLD_SIZE=4
+    [INFO] RANK=1
+    [INFO] LOCAL_RANK=0
+
+  Optional variables:
+    [INFO] NCCL_IB_DISABLE=0
+    [INFO] NCCL_DEBUG=INFO
+    [INFO] NCCL_SOCKET_IFNAME=not set
+    [INFO] CUDA_VISIBLE_DEVICES=0,1
+    [INFO] OMP_NUM_THREADS=not set
+    [INFO] TOKENIZERS_PARALLELISM=not set
+
+  [PASS] Environment variables collected — compare across nodes
+
+--- Filesystem Consistency ---
+  [INFO] Relevant mounts:
+    jail                                                                               2.0T   47G  2.0T   3% /run/nvidia/driver/mnt/jail
+    cloud-metadata                                                                    1008G   20K 1008G   1% /run/nvidia/driver/mnt/cloud-metadata
+    jail-submount-data                                                                  20T     0   20T   0% /run/nvidia/driver/mnt/jail-submount-data
+    tmpfs                                                                              1.5T     0  1.5T   0% /mnt/memory
+    jail-submount-data                                                                  20T     0   20T   0% /mnt/data
+    nfs-server.nfs-system.svc.cluster.local:/pvc-b01ff436-992a-492f-978e-6aa3f8f47dda  3.6T   87G  3.5T   3% /home
+    /dev/vdc                                                                          1006G   28K 1006G   1% /mnt/local-data
+    /dev/vdd                                                                           915G  7.8G  907G   1% /mnt/image-storage
+  [PASS] Can write to shared /home filesystem
+  [PASS] /mnt/data accessible: 20480.0GB free
+
+--- GPU Driver Consistency ---
+  [INFO] GPU 0: driver=570.211.01, model=NVIDIA H200
+  [INFO] GPU 1: driver=570.211.01, model=NVIDIA H200
+  [PASS] Driver info collected — compare across nodes
+
+--------------------------------------------------
+Node: worker-1 (rank 1)
+TEST 10 RESULT: PASS
+==================================================
+
+
+Phase 1 complete — exit code: 0
+
+============================================================
+PHASE 2: Multi-Node Validation (inter-node communication)
+============================================================
+
+--- Running Test 04: NCCL Inter-Node ---
+
+==================================================
+TEST 04: NCCL Inter-Node Communication Check
+
+==================================================
+TEST 04: NCCL Inter-Node Communication Check
+==================================================
+==================================================
+
+--- InfiniBand Interface Status ---
+
+--- InfiniBand Interface Status ---
+
+==================================================
+
+==================================================
+TEST 04: NCCL Inter-Node Communication Check
+==================================================
+TEST 04: NCCL Inter-Node Communication Check
+==================================================
+
+--- InfiniBand Interface Status ---
+
+--- InfiniBand Interface Status ---
+  [PASS] InfiniBand interface is active
+  [PASS] InfiniBand interface is active
+		State: Active
+		Physical state: LinkUp
+		Rate: 400
+		State: Active
+		Physical state: LinkUp
+		Rate: 400
+		State: Active
+		Physical state: LinkUp
+		Rate: 400
+		State: Active
+		State: Active
+		Physical state: LinkUp
+		Rate: 400
+		State: Active
+		Physical state: LinkUp
+		Rate: 400
+		State: Active
+		Physical state: LinkUp
+		Rate: 400
+		State: Active
+
+--- NCCL Environment Configuration ---
+  [PASS] NCCL_IB_DISABLE=0 — InfiniBand enabled
+  [INFO] MASTER_ADDR=worker-0
+  [INFO] MASTER_PORT=29500
+  [INFO] WORLD_SIZE=4
+  [INFO] RANK=3
+
+--- Inter-Node AllReduce Bandwidth Test ---
+
+--- NCCL Environment Configuration ---
+  [PASS] NCCL_IB_DISABLE=0 — InfiniBand enabled
+  [INFO] MASTER_ADDR=worker-0
+  [INFO] MASTER_PORT=29500
+  [INFO] WORLD_SIZE=4
+  [INFO] RANK=2
+
+--- Inter-Node AllReduce Bandwidth Test ---
+  [PASS] InfiniBand interface is active
+  [PASS] InfiniBand interface is active
+		State: Active
+		Physical state: LinkUp
+		Rate: 400
+		State: Active
+		Physical state: LinkUp
+		Rate: 400
+		State: Active
+		Physical state: LinkUp
+		Rate: 400
+		State: Active
+		State: Active
+		Physical state: LinkUp
+		Rate: 400
+		State: Active
+		Physical state: LinkUp
+		Rate: 400
+		State: Active
+		Physical state: LinkUp
+		Rate: 400
+		State: Active
+
+--- NCCL Environment Configuration ---
+  [PASS] NCCL_IB_DISABLE=0 — InfiniBand enabled
+  [INFO] MASTER_ADDR=worker-0
+  [INFO] MASTER_PORT=29500
+  [INFO] WORLD_SIZE=4
+  [INFO] RANK=1
+
+--- Inter-Node AllReduce Bandwidth Test ---
+
+--- NCCL Environment Configuration ---
+  [PASS] NCCL_IB_DISABLE=0 — InfiniBand enabled
+  [INFO] MASTER_ADDR=worker-0
+  [INFO] MASTER_PORT=29500
+  [INFO] WORLD_SIZE=4
+  [INFO] RANK=0
+
+--- Inter-Node AllReduce Bandwidth Test ---
+NCCL version 2.21.5+cuda12.4
+worker-0:878981:878981 [0] NCCL INFO Bootstrap : Using eth0:10.30.56.69<0>
+worker-0:878981:878981 [0] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+worker-0:878981:878981 [0] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+worker-0:878981:878981 [0] NCCL INFO NET/Plugin: Using internal network plugin.
+worker-0:878981:878981 [0] NCCL INFO cudaDriverVersion 12080
+worker-0:878981:878981 [0] NCCL INFO NCCL version 2.21.5+cuda12.4
+worker-0:878981:878981 [0] NCCL INFO Comm config Blocking set to 1
+worker-0:878980:878980 [1] NCCL INFO cudaDriverVersion 12080
+worker-0:878980:878980 [1] NCCL INFO Bootstrap : Using eth0:10.30.56.69<0>
+worker-0:878980:878980 [1] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+worker-0:878980:878980 [1] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+worker-0:878980:878980 [1] NCCL INFO NET/Plugin: Using internal network plugin.
+worker-0:878980:878980 [1] NCCL INFO Comm config Blocking set to 1
+worker-1:879202:879202 [0] NCCL INFO cudaDriverVersion 12080
+worker-1:879202:879202 [0] NCCL INFO Bootstrap : Using eth0:10.24.24.165<0>
+worker-1:879201:879201 [1] NCCL INFO cudaDriverVersion 12080
+worker-1:879201:879201 [1] NCCL INFO Bootstrap : Using eth0:10.24.24.165<0>
+worker-1:879202:879202 [0] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+worker-1:879202:879202 [0] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+worker-1:879202:879202 [0] NCCL INFO NET/Plugin: Using internal network plugin.
+worker-1:879202:879202 [0] NCCL INFO Comm config Blocking set to 1
+worker-1:879201:879201 [1] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+worker-1:879201:879201 [1] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+worker-1:879201:879201 [1] NCCL INFO NET/Plugin: Using internal network plugin.
+worker-1:879201:879201 [1] NCCL INFO Comm config Blocking set to 1
+worker-0:878980:879023 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+worker-0:878981:879022 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+worker-0:878980:879023 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB eth0:10.30.56.69<0>
+worker-0:878980:879023 [1] NCCL INFO Using non-device net plugin version 0
+worker-0:878980:879023 [1] NCCL INFO Using network IB
+worker-0:878981:879022 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB eth0:10.30.56.69<0>
+worker-0:878981:879022 [0] NCCL INFO Using non-device net plugin version 0
+worker-0:878981:879022 [0] NCCL INFO Using network IB
+worker-0:878980:879023 [1] NCCL INFO DMA-BUF is available on GPU device 1
+worker-0:878981:879022 [0] NCCL INFO DMA-BUF is available on GPU device 0
+worker-1:879202:879241 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+worker-1:879201:879242 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+worker-1:879201:879242 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB eth0:10.24.24.165<0>
+worker-1:879202:879241 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB eth0:10.24.24.165<0>
+worker-1:879201:879242 [1] NCCL INFO Using non-device net plugin version 0
+worker-1:879201:879242 [1] NCCL INFO Using network IB
+worker-1:879202:879241 [0] NCCL INFO Using non-device net plugin version 0
+worker-1:879202:879241 [0] NCCL INFO Using network IB
+worker-1:879201:879242 [1] NCCL INFO DMA-BUF is available on GPU device 1
+worker-1:879202:879241 [0] NCCL INFO DMA-BUF is available on GPU device 0
+worker-1:879202:879241 [0] NCCL INFO ncclCommInitRank comm 0xfeb8150 rank 2 nranks 4 cudaDev 0 nvmlDev 0 busId 8d000 commId 0x92aaafbd1d2daeac - Init START
+worker-1:879201:879242 [1] NCCL INFO ncclCommInitRank comm 0x30659dc0 rank 3 nranks 4 cudaDev 1 nvmlDev 1 busId 91000 commId 0x92aaafbd1d2daeac - Init START
+worker-0:878981:879022 [0] NCCL INFO ncclCommInitRank comm 0x3846ccb0 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 8d000 commId 0x92aaafbd1d2daeac - Init START
+worker-0:878980:879023 [1] NCCL INFO ncclCommInitRank comm 0x2c3d60d0 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 91000 commId 0x92aaafbd1d2daeac - Init START
+worker-1:879201:879242 [1] NCCL INFO MNNVL busId 0x91000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+worker-1:879202:879241 [0] NCCL INFO MNNVL busId 0x8d000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+worker-0:878980:879023 [1] NCCL INFO MNNVL busId 0x91000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+worker-0:878981:879022 [0] NCCL INFO MNNVL busId 0x8d000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+worker-1:879201:879242 [1] NCCL INFO Setting affinity for GPU 1 to ffff0000
+worker-1:879202:879241 [0] NCCL INFO Setting affinity for GPU 0 to ffff
+worker-0:878980:879023 [1] NCCL INFO Setting affinity for GPU 1 to ffff0000
+worker-0:878981:879022 [0] NCCL INFO Setting affinity for GPU 0 to ffff
+worker-0:878981:879022 [0] NCCL INFO comm 0x3846ccb0 rank 0 nRanks 4 nNodes 2 localRanks 2 localRank 0 MNNVL 0
+worker-0:878980:879023 [1] NCCL INFO comm 0x2c3d60d0 rank 1 nRanks 4 nNodes 2 localRanks 2 localRank 1 MNNVL 0
+worker-0:878981:879022 [0] NCCL INFO Channel 00/08 :    0   1   2   3
+worker-0:878981:879022 [0] NCCL INFO Channel 01/08 :    0   3   2   1
+worker-0:878980:879023 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] 0/3/-1->1->-1 [2] -1/-1/-1->1->0 [3] 0/3/-1->1->-1 [4] -1/-1/-1->1->0 [5] 0/-1/-1->1->3 [6] -1/-1/-1->1->0 [7] 0/-1/-1->1->3
+worker-1:879201:879242 [1] NCCL INFO comm 0x30659dc0 rank 3 nRanks 4 nNodes 2 localRanks 2 localRank 1 MNNVL 0
+worker-1:879201:879242 [1] NCCL INFO Trees [0] -1/-1/-1->3->2 [1] 2/-1/-1->3->1 [2] -1/-1/-1->3->2 [3] 2/-1/-1->3->1 [4] -1/-1/-1->3->2 [5] 2/1/-1->3->-1 [6] -1/-1/-1->3->2 [7] 2/1/-1->3->-1
+worker-1:879201:879242 [1] NCCL INFO P2P Chunksize set to 131072
+worker-1:879202:879241 [0] NCCL INFO comm 0xfeb8150 rank 2 nRanks 4 nNodes 2 localRanks 2 localRank 0 MNNVL 0
+worker-1:879202:879241 [0] NCCL INFO Trees [0] 3/-1/-1->2->0 [1] -1/-1/-1->2->3 [2] 3/-1/-1->2->0 [3] -1/-1/-1->2->3 [4] 3/0/-1->2->-1 [5] -1/-1/-1->2->3 [6] 3/0/-1->2->-1 [7] -1/-1/-1->2->3
+worker-1:879202:879241 [0] NCCL INFO P2P Chunksize set to 131072
+worker-0:878981:879022 [0] NCCL INFO Channel 02/08 :    0   1   2   3
+worker-0:878980:879023 [1] NCCL INFO P2P Chunksize set to 131072
+worker-0:878981:879022 [0] NCCL INFO Channel 03/08 :    0   3   2   1
+worker-0:878981:879022 [0] NCCL INFO Channel 04/08 :    0   1   2   3
+worker-0:878981:879022 [0] NCCL INFO Channel 05/08 :    0   3   2   1
+worker-0:878981:879022 [0] NCCL INFO Channel 06/08 :    0   1   2   3
+worker-0:878981:879022 [0] NCCL INFO Channel 07/08 :    0   3   2   1
+worker-0:878981:879022 [0] NCCL INFO Trees [0] 1/2/-1->0->-1 [1] -1/-1/-1->0->1 [2] 1/2/-1->0->-1 [3] -1/-1/-1->0->1 [4] 1/-1/-1->0->2 [5] -1/-1/-1->0->1 [6] 1/-1/-1->0->2 [7] -1/-1/-1->0->1
+worker-0:878981:879022 [0] NCCL INFO P2P Chunksize set to 131072
+worker-1:879202:879241 [0] NCCL INFO Channel 00/0 : 1[1] -> 2[0] [receive] via NET/IB/4/GDRDMA
+worker-0:878981:879022 [0] NCCL INFO Channel 00/0 : 3[1] -> 0[0] [receive] via NET/IB/4/GDRDMA
+worker-0:878980:879023 [1] NCCL INFO Channel 00/0 : 1[1] -> 2[0] [send] via NET/IB/4(0)/GDRDMA
+worker-0:878981:879022 [0] NCCL INFO Channel 02/0 : 3[1] -> 0[0] [receive] via NET/IB/4/GDRDMA
+worker-0:878980:879023 [1] NCCL INFO Channel 02/0 : 1[1] -> 2[0] [send] via NET/IB/4(0)/GDRDMA
+worker-0:878981:879022 [0] NCCL INFO Channel 04/0 : 3[1] -> 0[0] [receive] via NET/IB/4/GDRDMA
+worker-0:878980:879023 [1] NCCL INFO Channel 04/0 : 1[1] -> 2[0] [send] via NET/IB/4(0)/GDRDMA
+worker-1:879201:879242 [1] NCCL INFO Channel 00/0 : 3[1] -> 0[0] [send] via NET/IB/4(2)/GDRDMA
+worker-1:879202:879241 [0] NCCL INFO Channel 02/0 : 1[1] -> 2[0] [receive] via NET/IB/4/GDRDMA
+worker-1:879201:879242 [1] NCCL INFO Channel 02/0 : 3[1] -> 0[0] [send] via NET/IB/4(2)/GDRDMA
+worker-1:879202:879241 [0] NCCL INFO Channel 04/0 : 1[1] -> 2[0] [receive] via NET/IB/4/GDRDMA
+worker-1:879201:879242 [1] NCCL INFO Channel 04/0 : 3[1] -> 0[0] [send] via NET/IB/4(2)/GDRDMA
+worker-1:879202:879241 [0] NCCL INFO Channel 06/0 : 1[1] -> 2[0] [receive] via NET/IB/4/GDRDMA
+worker-1:879202:879241 [0] NCCL INFO Channel 00/0 : 2[0] -> 3[1] via P2P/CUMEM
+worker-1:879201:879242 [1] NCCL INFO Channel 06/0 : 3[1] -> 0[0] [send] via NET/IB/4(2)/GDRDMA
+worker-0:878981:879022 [0] NCCL INFO Channel 06/0 : 3[1] -> 0[0] [receive] via NET/IB/4/GDRDMA
+worker-0:878981:879022 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker-0:878980:879023 [1] NCCL INFO Channel 06/0 : 1[1] -> 2[0] [send] via NET/IB/4(0)/GDRDMA
+worker-0:878981:879022 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker-0:878981:879022 [0] NCCL INFO Channel 04/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker-0:878981:879022 [0] NCCL INFO Channel 06/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker-1:879202:879241 [0] NCCL INFO Channel 02/0 : 2[0] -> 3[1] via P2P/CUMEM
+worker-1:879202:879241 [0] NCCL INFO Channel 04/0 : 2[0] -> 3[1] via P2P/CUMEM
+worker-1:879202:879241 [0] NCCL INFO Channel 06/0 : 2[0] -> 3[1] via P2P/CUMEM
+worker-0:878981:879022 [0] NCCL INFO Channel 01/0 : 0[0] -> 3[1] [send] via NET/IB/5(1)/GDRDMA
+worker-1:879201:879242 [1] NCCL INFO Channel 01/0 : 0[0] -> 3[1] [receive] via NET/IB/5/GDRDMA
+worker-0:878980:879023 [1] NCCL INFO Channel 01/0 : 2[0] -> 1[1] [receive] via NET/IB/5/GDRDMA
+worker-0:878981:879022 [0] NCCL INFO Channel 03/0 : 0[0] -> 3[1] [send] via NET/IB/5(1)/GDRDMA
+worker-0:878980:879023 [1] NCCL INFO Channel 03/0 : 2[0] -> 1[1] [receive] via NET/IB/5/GDRDMA
+worker-0:878981:879022 [0] NCCL INFO Channel 05/0 : 0[0] -> 3[1] [send] via NET/IB/5(1)/GDRDMA
+worker-0:878980:879023 [1] NCCL INFO Channel 05/0 : 2[0] -> 1[1] [receive] via NET/IB/5/GDRDMA
+worker-0:878981:879022 [0] NCCL INFO Channel 07/0 : 0[0] -> 3[1] [send] via NET/IB/5(1)/GDRDMA
+worker-0:878980:879023 [1] NCCL INFO Channel 07/0 : 2[0] -> 1[1] [receive] via NET/IB/5/GDRDMA
+worker-0:878980:879023 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker-1:879202:879241 [0] NCCL INFO Channel 01/0 : 2[0] -> 1[1] [send] via NET/IB/5(3)/GDRDMA
+worker-1:879201:879242 [1] NCCL INFO Channel 03/0 : 0[0] -> 3[1] [receive] via NET/IB/5/GDRDMA
+worker-1:879202:879241 [0] NCCL INFO Channel 03/0 : 2[0] -> 1[1] [send] via NET/IB/5(3)/GDRDMA
+worker-1:879201:879242 [1] NCCL INFO Channel 05/0 : 0[0] -> 3[1] [receive] via NET/IB/5/GDRDMA
+worker-1:879202:879241 [0] NCCL INFO Channel 05/0 : 2[0] -> 1[1] [send] via NET/IB/5(3)/GDRDMA
+worker-1:879201:879242 [1] NCCL INFO Channel 07/0 : 0[0] -> 3[1] [receive] via NET/IB/5/GDRDMA
+worker-1:879201:879242 [1] NCCL INFO Channel 01/0 : 3[1] -> 2[0] via P2P/CUMEM
+worker-1:879202:879241 [0] NCCL INFO Channel 07/0 : 2[0] -> 1[1] [send] via NET/IB/5(3)/GDRDMA
+worker-0:878980:879023 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker-0:878980:879023 [1] NCCL INFO Channel 05/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker-0:878980:879023 [1] NCCL INFO Channel 07/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker-1:879201:879242 [1] NCCL INFO Channel 03/0 : 3[1] -> 2[0] via P2P/CUMEM
+worker-1:879201:879242 [1] NCCL INFO Channel 05/0 : 3[1] -> 2[0] via P2P/CUMEM
+worker-1:879201:879242 [1] NCCL INFO Channel 07/0 : 3[1] -> 2[0] via P2P/CUMEM
+worker-0:878981:879022 [0] NCCL INFO Connected all rings
+worker-0:878981:879022 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker-1:879201:879242 [1] NCCL INFO Connected all rings
+worker-1:879202:879241 [0] NCCL INFO Connected all rings
+worker-1:879202:879241 [0] NCCL INFO Channel 01/0 : 2[0] -> 3[1] via P2P/CUMEM
+worker-1:879202:879241 [0] NCCL INFO Channel 03/0 : 2[0] -> 3[1] via P2P/CUMEM
+worker-1:879202:879241 [0] NCCL INFO Channel 05/0 : 2[0] -> 3[1] via P2P/CUMEM
+worker-1:879202:879241 [0] NCCL INFO Channel 07/0 : 2[0] -> 3[1] via P2P/CUMEM
+worker-1:879201:879242 [1] NCCL INFO Channel 01/0 : 1[1] -> 3[1] [receive] via NET/IB/5/GDRDMA
+worker-1:879202:879241 [0] NCCL INFO Channel 00/0 : 0[0] -> 2[0] [receive] via NET/IB/4/GDRDMA
+worker-0:878981:879022 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker-0:878980:879023 [1] NCCL INFO Connected all rings
+worker-0:878981:879022 [0] NCCL INFO Channel 05/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker-0:878981:879022 [0] NCCL INFO Channel 07/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker-0:878981:879022 [0] NCCL INFO Channel 00/0 : 2[0] -> 0[0] [receive] via NET/IB/4/GDRDMA
+worker-0:878980:879023 [1] NCCL INFO Channel 01/0 : 3[1] -> 1[1] [receive] via NET/IB/5/GDRDMA
+worker-1:879201:879242 [1] NCCL INFO Channel 03/0 : 1[1] -> 3[1] [receive] via NET/IB/5/GDRDMA
+worker-1:879202:879241 [0] NCCL INFO Channel 02/0 : 0[0] -> 2[0] [receive] via NET/IB/4/GDRDMA
+worker-1:879201:879242 [1] NCCL INFO Channel 05/0 : 1[1] -> 3[1] [receive] via NET/IB/5/GDRDMA
+worker-1:879202:879241 [0] NCCL INFO Channel 04/0 : 0[0] -> 2[0] [receive] via NET/IB/4/GDRDMA
+worker-1:879201:879242 [1] NCCL INFO Channel 07/0 : 1[1] -> 3[1] [receive] via NET/IB/5/GDRDMA
+worker-1:879202:879241 [0] NCCL INFO Channel 06/0 : 0[0] -> 2[0] [receive] via NET/IB/4/GDRDMA
+worker-1:879201:879242 [1] NCCL INFO Channel 01/0 : 3[1] -> 1[1] [send] via NET/IB/5/GDRDMA
+worker-1:879202:879241 [0] NCCL INFO Channel 00/0 : 2[0] -> 0[0] [send] via NET/IB/4/GDRDMA
+worker-1:879201:879242 [1] NCCL INFO Channel 03/0 : 3[1] -> 1[1] [send] via NET/IB/5/GDRDMA
+worker-1:879202:879241 [0] NCCL INFO Channel 02/0 : 2[0] -> 0[0] [send] via NET/IB/4/GDRDMA
+worker-0:878981:879022 [0] NCCL INFO Channel 02/0 : 2[0] -> 0[0] [receive] via NET/IB/4/GDRDMA
+worker-0:878980:879023 [1] NCCL INFO Channel 03/0 : 3[1] -> 1[1] [receive] via NET/IB/5/GDRDMA
+worker-0:878981:879022 [0] NCCL INFO Channel 04/0 : 2[0] -> 0[0] [receive] via NET/IB/4/GDRDMA
+worker-0:878980:879023 [1] NCCL INFO Channel 05/0 : 3[1] -> 1[1] [receive] via NET/IB/5/GDRDMA
+worker-0:878981:879022 [0] NCCL INFO Channel 06/0 : 2[0] -> 0[0] [receive] via NET/IB/4/GDRDMA
+worker-0:878980:879023 [1] NCCL INFO Channel 07/0 : 3[1] -> 1[1] [receive] via NET/IB/5/GDRDMA
+worker-0:878981:879022 [0] NCCL INFO Channel 00/0 : 0[0] -> 2[0] [send] via NET/IB/4/GDRDMA
+worker-0:878981:879022 [0] NCCL INFO Channel 02/0 : 0[0] -> 2[0] [send] via NET/IB/4/GDRDMA
+worker-0:878980:879023 [1] NCCL INFO Channel 01/0 : 1[1] -> 3[1] [send] via NET/IB/5/GDRDMA
+worker-0:878981:879022 [0] NCCL INFO Channel 04/0 : 0[0] -> 2[0] [send] via NET/IB/4/GDRDMA
+worker-0:878980:879023 [1] NCCL INFO Channel 03/0 : 1[1] -> 3[1] [send] via NET/IB/5/GDRDMA
+worker-0:878981:879022 [0] NCCL INFO Channel 06/0 : 0[0] -> 2[0] [send] via NET/IB/4/GDRDMA
+worker-0:878980:879023 [1] NCCL INFO Channel 05/0 : 1[1] -> 3[1] [send] via NET/IB/5/GDRDMA
+worker-0:878980:879023 [1] NCCL INFO Channel 07/0 : 1[1] -> 3[1] [send] via NET/IB/5/GDRDMA
+worker-1:879201:879242 [1] NCCL INFO Channel 05/0 : 3[1] -> 1[1] [send] via NET/IB/5/GDRDMA
+worker-1:879201:879242 [1] NCCL INFO Channel 07/0 : 3[1] -> 1[1] [send] via NET/IB/5/GDRDMA
+worker-1:879202:879241 [0] NCCL INFO Channel 04/0 : 2[0] -> 0[0] [send] via NET/IB/4/GDRDMA
+worker-0:878980:879023 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker-1:879202:879241 [0] NCCL INFO Channel 06/0 : 2[0] -> 0[0] [send] via NET/IB/4/GDRDMA
+worker-1:879201:879242 [1] NCCL INFO Channel 00/0 : 3[1] -> 2[0] via P2P/CUMEM
+worker-1:879201:879242 [1] NCCL INFO Channel 02/0 : 3[1] -> 2[0] via P2P/CUMEM
+worker-1:879201:879242 [1] NCCL INFO Channel 04/0 : 3[1] -> 2[0] via P2P/CUMEM
+worker-1:879201:879242 [1] NCCL INFO Channel 06/0 : 3[1] -> 2[0] via P2P/CUMEM
+worker-0:878980:879023 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker-0:878980:879023 [1] NCCL INFO Channel 04/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker-0:878980:879023 [1] NCCL INFO Channel 06/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker-0:878980:879023 [1] NCCL INFO Connected all trees
+worker-0:878980:879023 [1] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+worker-0:878980:879023 [1] NCCL INFO 8 coll channels, 8 collnet channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+worker-0:878981:879022 [0] NCCL INFO Connected all trees
+worker-0:878981:879022 [0] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+worker-0:878981:879022 [0] NCCL INFO 8 coll channels, 8 collnet channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+worker-1:879202:879241 [0] NCCL INFO Connected all trees
+worker-1:879201:879242 [1] NCCL INFO Connected all trees
+worker-1:879202:879241 [0] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+worker-1:879202:879241 [0] NCCL INFO 8 coll channels, 8 collnet channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+worker-1:879201:879242 [1] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+worker-1:879201:879242 [1] NCCL INFO 8 coll channels, 8 collnet channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+worker-0:878981:879022 [0] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+worker-0:878981:879022 [0] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+worker-0:878981:879022 [0] NCCL INFO ncclCommInitRank comm 0x3846ccb0 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 8d000 commId 0x92aaafbd1d2daeac - Init COMPLETE
+worker-1:879202:879241 [0] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+worker-1:879202:879241 [0] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+worker-1:879202:879241 [0] NCCL INFO ncclCommInitRank comm 0xfeb8150 rank 2 nranks 4 cudaDev 0 nvmlDev 0 busId 8d000 commId 0x92aaafbd1d2daeac - Init COMPLETE
+worker-1:879201:879242 [1] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+worker-1:879201:879242 [1] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+worker-0:878980:879023 [1] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+worker-0:878980:879023 [1] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+worker-0:878980:879023 [1] NCCL INFO ncclCommInitRank comm 0x2c3d60d0 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 91000 commId 0x92aaafbd1d2daeac - Init COMPLETE
+worker-1:879201:879242 [1] NCCL INFO ncclCommInitRank comm 0x30659dc0 rank 3 nranks 4 cudaDev 1 nvmlDev 1 busId 91000 commId 0x92aaafbd1d2daeac - Init COMPLETE
+worker-1:879202:879202 [0] NCCL INFO comm 0xfeb8150 rank 2 nranks 4 cudaDev 0 busId 8d000 - Destroy COMPLETE
+worker-0:878981:878981 [0] NCCL INFO comm 0x3846ccb0 rank 0 nranks 4 cudaDev 0 busId 8d000 - Destroy COMPLETE
+worker-0:878980:878980 [1] NCCL INFO comm 0x2c3d60d0 rank 1 nranks 4 cudaDev 1 busId 91000 - Destroy COMPLETE
+  [INFO] Rank 2/4 on worker-0
+  [INFO] Process group initialized — running warmup
+  [INFO] Warmup complete — starting timed bandwidth tests
+  Inter-node bandwidth: PASS
+  [INFO] Rank 1/4 on worker-0
+  [INFO] Process group initialized — running warmup
+  [INFO] Warmup complete — starting timed bandwidth tests
+  Inter-node bandwidth: PASS
+worker-1:879201:879201 [1] NCCL INFO comm 0x30659dc0 rank 3 nranks 4 cudaDev 1 busId 91000 - Destroy COMPLETE
+  [INFO] Rank 0/4 on worker-0
+  [INFO] Process group initialized — running warmup
+  [INFO] Warmup complete — starting timed bandwidth tests
+  [PASS] 100MB AllReduce: 54.3 GB/s
+  [PASS] 500MB AllReduce: 60.4 GB/s
+  [PASS] 1024MB AllReduce: 82.9 GB/s
+  Inter-node bandwidth: PASS
+  [INFO] Rank 3/4 on worker-0
+  [INFO] Process group initialized — running warmup
+  [INFO] Warmup complete — starting timed bandwidth tests
+  Inter-node bandwidth: PASS
+
+--- Network Latency Check ---
+
+--- Network Latency Check ---
+
+--- Network Latency Check ---
+
+--- Network Latency Check ---
+  [INFO] Average latency to worker-1: 0.022ms
+  [INFO] Average latency to worker-1: 0.576ms
+  [PASS] Sub-millisecond latency confirmed
+
+--------------------------------------------------
+TEST 04 RESULT: PASS
+==================================================
+
+  [PASS] Sub-millisecond latency confirmed
+
+--------------------------------------------------
+TEST 04 RESULT: PASS
+==================================================
+
+  [INFO] Average latency to worker-1: 0.504ms
+  [PASS] Sub-millisecond latency confirmed
+
+--------------------------------------------------
+TEST 04 RESULT: PASS
+==================================================
+
+  [INFO] Average latency to worker-1: 0.019ms
+  [PASS] Sub-millisecond latency confirmed
+
+--------------------------------------------------
+TEST 04 RESULT: PASS
+==================================================
+
+Test 04 exit code: 0
+
+--- Running Test 07: Distributed Smoke Test ---
+NCCL version 2.21.5+cuda12.4
+worker-0:879100:879100 [0] NCCL INFO Bootstrap : Using eth0:10.30.56.69<0>
+worker-0:879100:879100 [0] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+worker-0:879100:879100 [0] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+worker-0:879100:879100 [0] NCCL INFO NET/Plugin: Using internal network plugin.
+worker-0:879100:879100 [0] NCCL INFO cudaDriverVersion 12080
+worker-0:879100:879100 [0] NCCL INFO NCCL version 2.21.5+cuda12.4
+worker-0:879100:879100 [0] NCCL INFO Comm config Blocking set to 1
+worker-0:879101:879101 [1] NCCL INFO cudaDriverVersion 12080
+worker-0:879101:879101 [1] NCCL INFO Bootstrap : Using eth0:10.30.56.69<0>
+worker-0:879101:879101 [1] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+worker-0:879101:879101 [1] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+worker-0:879101:879101 [1] NCCL INFO NET/Plugin: Using internal network plugin.
+worker-0:879101:879101 [1] NCCL INFO Comm config Blocking set to 1
+worker-1:879312:879312 [1] NCCL INFO cudaDriverVersion 12080
+worker-1:879311:879311 [0] NCCL INFO cudaDriverVersion 12080
+worker-1:879312:879312 [1] NCCL INFO Bootstrap : Using eth0:10.24.24.165<0>
+worker-1:879311:879311 [0] NCCL INFO Bootstrap : Using eth0:10.24.24.165<0>
+worker-1:879312:879312 [1] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+worker-1:879312:879312 [1] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+worker-1:879312:879312 [1] NCCL INFO NET/Plugin: Using internal network plugin.
+worker-1:879312:879312 [1] NCCL INFO Comm config Blocking set to 1
+worker-1:879311:879311 [0] NCCL INFO NET/Plugin: No plugin found (libnccl-net.so)
+worker-1:879311:879311 [0] NCCL INFO NET/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-net.so
+worker-1:879311:879311 [0] NCCL INFO NET/Plugin: Using internal network plugin.
+worker-1:879311:879311 [0] NCCL INFO Comm config Blocking set to 1
+worker-0:879100:879144 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+worker-1:879312:879353 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+worker-1:879311:879354 [0] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+worker-0:879101:879145 [1] NCCL INFO NCCL_IB_DISABLE set by environment to 0.
+worker-0:879100:879144 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB eth0:10.30.56.69<0>
+worker-0:879100:879144 [0] NCCL INFO Using non-device net plugin version 0
+worker-0:879100:879144 [0] NCCL INFO Using network IB
+worker-0:879100:879144 [0] NCCL INFO DMA-BUF is available on GPU device 0
+worker-0:879101:879145 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB eth0:10.30.56.69<0>
+worker-0:879101:879145 [1] NCCL INFO Using non-device net plugin version 0
+worker-0:879101:879145 [1] NCCL INFO Using network IB
+worker-0:879101:879145 [1] NCCL INFO DMA-BUF is available on GPU device 1
+worker-1:879312:879353 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB eth0:10.24.24.165<0>
+worker-1:879311:879354 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [1]mlx5_1:1/IB [2]mlx5_2:1/IB [3]mlx5_3:1/IB [4]mlx5_4:1/IB [5]mlx5_5:1/IB [6]mlx5_6:1/IB [7]mlx5_7:1/IB [RO]; OOB eth0:10.24.24.165<0>
+worker-1:879311:879354 [0] NCCL INFO Using non-device net plugin version 0
+worker-1:879311:879354 [0] NCCL INFO Using network IB
+worker-1:879312:879353 [1] NCCL INFO Using non-device net plugin version 0
+worker-1:879312:879353 [1] NCCL INFO Using network IB
+worker-1:879311:879354 [0] NCCL INFO DMA-BUF is available on GPU device 0
+worker-1:879312:879353 [1] NCCL INFO DMA-BUF is available on GPU device 1
+worker-1:879312:879353 [1] NCCL INFO ncclCommInitRank comm 0x3fc7a330 rank 3 nranks 4 cudaDev 1 nvmlDev 1 busId 91000 commId 0xb38beda852eeea5f - Init START
+worker-1:879311:879354 [0] NCCL INFO ncclCommInitRank comm 0x401012b0 rank 2 nranks 4 cudaDev 0 nvmlDev 0 busId 8d000 commId 0xb38beda852eeea5f - Init START
+worker-0:879101:879145 [1] NCCL INFO ncclCommInitRank comm 0x178894d0 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 91000 commId 0xb38beda852eeea5f - Init START
+worker-0:879100:879144 [0] NCCL INFO ncclCommInitRank comm 0xf5764c0 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 8d000 commId 0xb38beda852eeea5f - Init START
+worker-1:879312:879353 [1] NCCL INFO MNNVL busId 0x91000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+worker-1:879311:879354 [0] NCCL INFO MNNVL busId 0x8d000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+worker-0:879101:879145 [1] NCCL INFO MNNVL busId 0x91000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+worker-0:879100:879144 [0] NCCL INFO MNNVL busId 0x8d000 fabric UUID 0.0 cliqueId 0x0 state 3 healthMask 0x0
+worker-1:879312:879353 [1] NCCL INFO Setting affinity for GPU 1 to ffff0000
+worker-1:879311:879354 [0] NCCL INFO Setting affinity for GPU 0 to ffff
+worker-0:879100:879144 [0] NCCL INFO Setting affinity for GPU 0 to ffff
+worker-0:879101:879145 [1] NCCL INFO Setting affinity for GPU 1 to ffff0000
+worker-0:879100:879144 [0] NCCL INFO comm 0xf5764c0 rank 0 nRanks 4 nNodes 2 localRanks 2 localRank 0 MNNVL 0
+worker-0:879101:879145 [1] NCCL INFO comm 0x178894d0 rank 1 nRanks 4 nNodes 2 localRanks 2 localRank 1 MNNVL 0
+worker-0:879100:879144 [0] NCCL INFO Channel 00/08 :    0   1   2   3
+worker-0:879100:879144 [0] NCCL INFO Channel 01/08 :    0   3   2   1
+worker-0:879100:879144 [0] NCCL INFO Channel 02/08 :    0   1   2   3
+worker-0:879100:879144 [0] NCCL INFO Channel 03/08 :    0   3   2   1
+worker-0:879100:879144 [0] NCCL INFO Channel 04/08 :    0   1   2   3
+worker-0:879100:879144 [0] NCCL INFO Channel 05/08 :    0   3   2   1
+worker-0:879101:879145 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] 0/3/-1->1->-1 [2] -1/-1/-1->1->0 [3] 0/3/-1->1->-1 [4] -1/-1/-1->1->0 [5] 0/-1/-1->1->3 [6] -1/-1/-1->1->0 [7] 0/-1/-1->1->3
+worker-0:879100:879144 [0] NCCL INFO Channel 06/08 :    0   1   2   3
+worker-0:879100:879144 [0] NCCL INFO Channel 07/08 :    0   3   2   1
+worker-0:879101:879145 [1] NCCL INFO P2P Chunksize set to 131072
+worker-0:879100:879144 [0] NCCL INFO Trees [0] 1/2/-1->0->-1 [1] -1/-1/-1->0->1 [2] 1/2/-1->0->-1 [3] -1/-1/-1->0->1 [4] 1/-1/-1->0->2 [5] -1/-1/-1->0->1 [6] 1/-1/-1->0->2 [7] -1/-1/-1->0->1
+worker-0:879100:879144 [0] NCCL INFO P2P Chunksize set to 131072
+worker-1:879312:879353 [1] NCCL INFO comm 0x3fc7a330 rank 3 nRanks 4 nNodes 2 localRanks 2 localRank 1 MNNVL 0
+worker-1:879312:879353 [1] NCCL INFO Trees [0] -1/-1/-1->3->2 [1] 2/-1/-1->3->1 [2] -1/-1/-1->3->2 [3] 2/-1/-1->3->1 [4] -1/-1/-1->3->2 [5] 2/1/-1->3->-1 [6] -1/-1/-1->3->2 [7] 2/1/-1->3->-1
+worker-1:879312:879353 [1] NCCL INFO P2P Chunksize set to 131072
+worker-1:879311:879354 [0] NCCL INFO comm 0x401012b0 rank 2 nRanks 4 nNodes 2 localRanks 2 localRank 0 MNNVL 0
+worker-1:879311:879354 [0] NCCL INFO Trees [0] 3/-1/-1->2->0 [1] -1/-1/-1->2->3 [2] 3/-1/-1->2->0 [3] -1/-1/-1->2->3 [4] 3/0/-1->2->-1 [5] -1/-1/-1->2->3 [6] 3/0/-1->2->-1 [7] -1/-1/-1->2->3
+worker-1:879311:879354 [0] NCCL INFO P2P Chunksize set to 131072
+worker-0:879100:879144 [0] NCCL INFO Channel 00/0 : 3[1] -> 0[0] [receive] via NET/IB/4/GDRDMA
+worker-1:879311:879354 [0] NCCL INFO Channel 00/0 : 1[1] -> 2[0] [receive] via NET/IB/4/GDRDMA
+worker-1:879312:879353 [1] NCCL INFO Channel 00/0 : 3[1] -> 0[0] [send] via NET/IB/4(2)/GDRDMA
+worker-1:879311:879354 [0] NCCL INFO Channel 02/0 : 1[1] -> 2[0] [receive] via NET/IB/4/GDRDMA
+worker-1:879312:879353 [1] NCCL INFO Channel 02/0 : 3[1] -> 0[0] [send] via NET/IB/4(2)/GDRDMA
+worker-1:879311:879354 [0] NCCL INFO Channel 04/0 : 1[1] -> 2[0] [receive] via NET/IB/4/GDRDMA
+worker-1:879312:879353 [1] NCCL INFO Channel 04/0 : 3[1] -> 0[0] [send] via NET/IB/4(2)/GDRDMA
+worker-1:879311:879354 [0] NCCL INFO Channel 06/0 : 1[1] -> 2[0] [receive] via NET/IB/4/GDRDMA
+worker-1:879311:879354 [0] NCCL INFO Channel 00/0 : 2[0] -> 3[1] via P2P/CUMEM
+worker-1:879312:879353 [1] NCCL INFO Channel 06/0 : 3[1] -> 0[0] [send] via NET/IB/4(2)/GDRDMA
+worker-1:879311:879354 [0] NCCL INFO Channel 02/0 : 2[0] -> 3[1] via P2P/CUMEM
+worker-0:879101:879145 [1] NCCL INFO Channel 00/0 : 1[1] -> 2[0] [send] via NET/IB/4(0)/GDRDMA
+worker-0:879100:879144 [0] NCCL INFO Channel 02/0 : 3[1] -> 0[0] [receive] via NET/IB/4/GDRDMA
+worker-0:879101:879145 [1] NCCL INFO Channel 02/0 : 1[1] -> 2[0] [send] via NET/IB/4(0)/GDRDMA
+worker-0:879100:879144 [0] NCCL INFO Channel 04/0 : 3[1] -> 0[0] [receive] via NET/IB/4/GDRDMA
+worker-0:879101:879145 [1] NCCL INFO Channel 04/0 : 1[1] -> 2[0] [send] via NET/IB/4(0)/GDRDMA
+worker-0:879100:879144 [0] NCCL INFO Channel 06/0 : 3[1] -> 0[0] [receive] via NET/IB/4/GDRDMA
+worker-0:879100:879144 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker-0:879101:879145 [1] NCCL INFO Channel 06/0 : 1[1] -> 2[0] [send] via NET/IB/4(0)/GDRDMA
+worker-0:879100:879144 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker-0:879100:879144 [0] NCCL INFO Channel 04/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker-0:879100:879144 [0] NCCL INFO Channel 06/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker-1:879311:879354 [0] NCCL INFO Channel 04/0 : 2[0] -> 3[1] via P2P/CUMEM
+worker-1:879311:879354 [0] NCCL INFO Channel 06/0 : 2[0] -> 3[1] via P2P/CUMEM
+worker-0:879101:879145 [1] NCCL INFO Channel 01/0 : 2[0] -> 1[1] [receive] via NET/IB/5/GDRDMA
+worker-1:879312:879353 [1] NCCL INFO Channel 01/0 : 0[0] -> 3[1] [receive] via NET/IB/5/GDRDMA
+worker-0:879100:879144 [0] NCCL INFO Channel 01/0 : 0[0] -> 3[1] [send] via NET/IB/5(1)/GDRDMA
+worker-0:879101:879145 [1] NCCL INFO Channel 03/0 : 2[0] -> 1[1] [receive] via NET/IB/5/GDRDMA
+worker-0:879100:879144 [0] NCCL INFO Channel 03/0 : 0[0] -> 3[1] [send] via NET/IB/5(1)/GDRDMA
+worker-0:879101:879145 [1] NCCL INFO Channel 05/0 : 2[0] -> 1[1] [receive] via NET/IB/5/GDRDMA
+worker-0:879100:879144 [0] NCCL INFO Channel 05/0 : 0[0] -> 3[1] [send] via NET/IB/5(1)/GDRDMA
+worker-0:879101:879145 [1] NCCL INFO Channel 07/0 : 2[0] -> 1[1] [receive] via NET/IB/5/GDRDMA
+worker-0:879101:879145 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker-0:879100:879144 [0] NCCL INFO Channel 07/0 : 0[0] -> 3[1] [send] via NET/IB/5(1)/GDRDMA
+worker-0:879101:879145 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker-1:879311:879354 [0] NCCL INFO Channel 01/0 : 2[0] -> 1[1] [send] via NET/IB/5(3)/GDRDMA
+worker-1:879312:879353 [1] NCCL INFO Channel 03/0 : 0[0] -> 3[1] [receive] via NET/IB/5/GDRDMA
+worker-1:879311:879354 [0] NCCL INFO Channel 03/0 : 2[0] -> 1[1] [send] via NET/IB/5(3)/GDRDMA
+worker-1:879312:879353 [1] NCCL INFO Channel 05/0 : 0[0] -> 3[1] [receive] via NET/IB/5/GDRDMA
+worker-1:879311:879354 [0] NCCL INFO Channel 05/0 : 2[0] -> 1[1] [send] via NET/IB/5(3)/GDRDMA
+worker-1:879312:879353 [1] NCCL INFO Channel 07/0 : 0[0] -> 3[1] [receive] via NET/IB/5/GDRDMA
+worker-1:879312:879353 [1] NCCL INFO Channel 01/0 : 3[1] -> 2[0] via P2P/CUMEM
+worker-1:879311:879354 [0] NCCL INFO Channel 07/0 : 2[0] -> 1[1] [send] via NET/IB/5(3)/GDRDMA
+worker-0:879101:879145 [1] NCCL INFO Channel 05/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker-0:879101:879145 [1] NCCL INFO Channel 07/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker-1:879312:879353 [1] NCCL INFO Channel 03/0 : 3[1] -> 2[0] via P2P/CUMEM
+worker-1:879312:879353 [1] NCCL INFO Channel 05/0 : 3[1] -> 2[0] via P2P/CUMEM
+worker-1:879312:879353 [1] NCCL INFO Channel 07/0 : 3[1] -> 2[0] via P2P/CUMEM
+worker-0:879101:879145 [1] NCCL INFO Connected all rings
+worker-1:879311:879354 [0] NCCL INFO Connected all rings
+worker-1:879311:879354 [0] NCCL INFO Channel 01/0 : 2[0] -> 3[1] via P2P/CUMEM
+worker-1:879311:879354 [0] NCCL INFO Channel 03/0 : 2[0] -> 3[1] via P2P/CUMEM
+worker-1:879311:879354 [0] NCCL INFO Channel 05/0 : 2[0] -> 3[1] via P2P/CUMEM
+worker-1:879311:879354 [0] NCCL INFO Channel 07/0 : 2[0] -> 3[1] via P2P/CUMEM
+worker-1:879312:879353 [1] NCCL INFO Connected all rings
+worker-0:879100:879144 [0] NCCL INFO Connected all rings
+worker-0:879100:879144 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker-0:879100:879144 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker-1:879311:879354 [0] NCCL INFO Channel 00/0 : 0[0] -> 2[0] [receive] via NET/IB/4/GDRDMA
+worker-1:879312:879353 [1] NCCL INFO Channel 01/0 : 1[1] -> 3[1] [receive] via NET/IB/5/GDRDMA
+worker-0:879100:879144 [0] NCCL INFO Channel 05/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker-0:879100:879144 [0] NCCL INFO Channel 07/0 : 0[0] -> 1[1] via P2P/CUMEM
+worker-0:879100:879144 [0] NCCL INFO Channel 00/0 : 2[0] -> 0[0] [receive] via NET/IB/4/GDRDMA
+worker-0:879101:879145 [1] NCCL INFO Channel 01/0 : 3[1] -> 1[1] [receive] via NET/IB/5/GDRDMA
+worker-1:879312:879353 [1] NCCL INFO Channel 03/0 : 1[1] -> 3[1] [receive] via NET/IB/5/GDRDMA
+worker-1:879311:879354 [0] NCCL INFO Channel 02/0 : 0[0] -> 2[0] [receive] via NET/IB/4/GDRDMA
+worker-1:879311:879354 [0] NCCL INFO Channel 04/0 : 0[0] -> 2[0] [receive] via NET/IB/4/GDRDMA
+worker-1:879312:879353 [1] NCCL INFO Channel 05/0 : 1[1] -> 3[1] [receive] via NET/IB/5/GDRDMA
+worker-1:879312:879353 [1] NCCL INFO Channel 07/0 : 1[1] -> 3[1] [receive] via NET/IB/5/GDRDMA
+worker-1:879311:879354 [0] NCCL INFO Channel 06/0 : 0[0] -> 2[0] [receive] via NET/IB/4/GDRDMA
+worker-1:879312:879353 [1] NCCL INFO Channel 01/0 : 3[1] -> 1[1] [send] via NET/IB/5/GDRDMA
+worker-1:879311:879354 [0] NCCL INFO Channel 00/0 : 2[0] -> 0[0] [send] via NET/IB/4/GDRDMA
+worker-1:879311:879354 [0] NCCL INFO Channel 02/0 : 2[0] -> 0[0] [send] via NET/IB/4/GDRDMA
+worker-1:879312:879353 [1] NCCL INFO Channel 03/0 : 3[1] -> 1[1] [send] via NET/IB/5/GDRDMA
+worker-1:879311:879354 [0] NCCL INFO Channel 04/0 : 2[0] -> 0[0] [send] via NET/IB/4/GDRDMA
+worker-1:879312:879353 [1] NCCL INFO Channel 05/0 : 3[1] -> 1[1] [send] via NET/IB/5/GDRDMA
+worker-1:879312:879353 [1] NCCL INFO Channel 07/0 : 3[1] -> 1[1] [send] via NET/IB/5/GDRDMA
+worker-1:879311:879354 [0] NCCL INFO Channel 06/0 : 2[0] -> 0[0] [send] via NET/IB/4/GDRDMA
+worker-0:879100:879144 [0] NCCL INFO Channel 02/0 : 2[0] -> 0[0] [receive] via NET/IB/4/GDRDMA
+worker-0:879101:879145 [1] NCCL INFO Channel 03/0 : 3[1] -> 1[1] [receive] via NET/IB/5/GDRDMA
+worker-0:879100:879144 [0] NCCL INFO Channel 04/0 : 2[0] -> 0[0] [receive] via NET/IB/4/GDRDMA
+worker-0:879101:879145 [1] NCCL INFO Channel 05/0 : 3[1] -> 1[1] [receive] via NET/IB/5/GDRDMA
+worker-0:879100:879144 [0] NCCL INFO Channel 06/0 : 2[0] -> 0[0] [receive] via NET/IB/4/GDRDMA
+worker-0:879101:879145 [1] NCCL INFO Channel 07/0 : 3[1] -> 1[1] [receive] via NET/IB/5/GDRDMA
+worker-0:879100:879144 [0] NCCL INFO Channel 00/0 : 0[0] -> 2[0] [send] via NET/IB/4/GDRDMA
+worker-0:879101:879145 [1] NCCL INFO Channel 01/0 : 1[1] -> 3[1] [send] via NET/IB/5/GDRDMA
+worker-0:879100:879144 [0] NCCL INFO Channel 02/0 : 0[0] -> 2[0] [send] via NET/IB/4/GDRDMA
+worker-0:879101:879145 [1] NCCL INFO Channel 03/0 : 1[1] -> 3[1] [send] via NET/IB/5/GDRDMA
+worker-0:879100:879144 [0] NCCL INFO Channel 04/0 : 0[0] -> 2[0] [send] via NET/IB/4/GDRDMA
+worker-0:879101:879145 [1] NCCL INFO Channel 05/0 : 1[1] -> 3[1] [send] via NET/IB/5/GDRDMA
+worker-0:879101:879145 [1] NCCL INFO Channel 07/0 : 1[1] -> 3[1] [send] via NET/IB/5/GDRDMA
+worker-0:879100:879144 [0] NCCL INFO Channel 06/0 : 0[0] -> 2[0] [send] via NET/IB/4/GDRDMA
+worker-0:879101:879145 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker-1:879312:879353 [1] NCCL INFO Channel 00/0 : 3[1] -> 2[0] via P2P/CUMEM
+worker-1:879312:879353 [1] NCCL INFO Channel 02/0 : 3[1] -> 2[0] via P2P/CUMEM
+worker-1:879312:879353 [1] NCCL INFO Channel 04/0 : 3[1] -> 2[0] via P2P/CUMEM
+worker-0:879101:879145 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker-0:879101:879145 [1] NCCL INFO Channel 04/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker-0:879101:879145 [1] NCCL INFO Channel 06/0 : 1[1] -> 0[0] via P2P/CUMEM
+worker-1:879312:879353 [1] NCCL INFO Channel 06/0 : 3[1] -> 2[0] via P2P/CUMEM
+worker-0:879100:879144 [0] NCCL INFO Connected all trees
+worker-0:879101:879145 [1] NCCL INFO Connected all trees
+worker-1:879311:879354 [0] NCCL INFO Connected all trees
+worker-1:879312:879353 [1] NCCL INFO Connected all trees
+worker-1:879312:879353 [1] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+worker-1:879312:879353 [1] NCCL INFO 8 coll channels, 8 collnet channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+worker-1:879311:879354 [0] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+worker-1:879311:879354 [0] NCCL INFO 8 coll channels, 8 collnet channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+worker-0:879101:879145 [1] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+worker-0:879101:879145 [1] NCCL INFO 8 coll channels, 8 collnet channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+worker-0:879100:879144 [0] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+worker-0:879100:879144 [0] NCCL INFO 8 coll channels, 8 collnet channels, 0 nvls channels, 8 p2p channels, 2 p2p channels per peer
+worker-1:879312:879353 [1] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+worker-1:879312:879353 [1] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+worker-1:879312:879353 [1] NCCL INFO ncclCommInitRank comm 0x3fc7a330 rank 3 nranks 4 cudaDev 1 nvmlDev 1 busId 91000 commId 0xb38beda852eeea5f - Init COMPLETE
+worker-1:879311:879354 [0] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+worker-1:879311:879354 [0] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+worker-0:879101:879145 [1] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+worker-0:879101:879145 [1] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+worker-0:879101:879145 [1] NCCL INFO ncclCommInitRank comm 0x178894d0 rank 1 nranks 4 cudaDev 1 nvmlDev 1 busId 91000 commId 0xb38beda852eeea5f - Init COMPLETE
+worker-1:879311:879354 [0] NCCL INFO ncclCommInitRank comm 0x401012b0 rank 2 nranks 4 cudaDev 0 nvmlDev 0 busId 8d000 commId 0xb38beda852eeea5f - Init COMPLETE
+worker-0:879100:879144 [0] NCCL INFO TUNER/Plugin: Plugin load returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory : when loading libnccl-tuner.so
+worker-0:879100:879144 [0] NCCL INFO TUNER/Plugin: Using internal tuner plugin.
+worker-0:879100:879144 [0] NCCL INFO ncclCommInitRank comm 0xf5764c0 rank 0 nranks 4 cudaDev 0 nvmlDev 0 busId 8d000 commId 0xb38beda852eeea5f - Init COMPLETE
+
+==================================================
+TEST 07: Distributed Training Smoke Test
+==================================================
+
+--- Initializing Distributed Environment ---
+  [INFO] Initializing rank 0/4
+  [INFO] Master: worker-0:29500
+  [INFO] Local rank: 0
+  [PASS] Process group initialized: 4 processes across nodes
+
+--- Building FSDP Model ---
+  [INFO] Model wrapped with FSDP FULL_SHARD strategy
+  [PASS] Model built and wrapped with FSDP
+
+--- Running Training Steps ---
+  [INFO] Running 5 training steps
+  [INFO] Batch size: 4, Sequence length: 64
+  [INFO] Step 1/5: loss=10.4813, time=924.0ms, throughput=4.3 samples/s
+  [INFO] Step 2/5: loss=10.5671, time=10.2ms, throughput=391.2 samples/s
+  [INFO] Step 3/5: loss=10.6110, time=8.4ms, throughput=476.0 samples/s
+  [INFO] Step 4/5: loss=10.5299, time=8.1ms, throughput=492.4 samples/s
+  [INFO] Step 5/5: loss=10.5532, time=7.9ms, throughput=506.5 samples/s
+  [PASS] Training throughput: 20.9 samples/s
+
+--- Verifying Gradient Synchronization ---
+  [PASS] Gradient sync verified: AllReduce sum = 6 (expected 6)
+
+--- Checking FSDP Memory Efficiency ---
+  [INFO] GPU memory allocated: 0.15 GB
+  [INFO] GPU peak memory:      0.15 GB
+  [PASS] FSDP memory sharding working correctly
+
+--------------------------------------------------
+TEST 07 RESULT: PASS
+[INFO] Full distributed training stack verified:
+       NCCL ✓  FSDP ✓  AllReduce ✓  Optimizer ✓
+==================================================
+
+worker-0:879100:879100 [0] NCCL INFO comm 0xf5764c0 rank 0 nranks 4 cudaDev 0 busId 8d000 - Destroy COMPLETE
+worker-1:879311:879311 [0] NCCL INFO comm 0x401012b0 rank 2 nranks 4 cudaDev 0 busId 8d000 - Destroy COMPLETE
+
+==================================================
+TEST 07: Distributed Training Smoke Test
+==================================================
+
+--- Initializing Distributed Environment ---
+  [INFO] Initializing rank 2/4
+  [INFO] Master: worker-0:29500
+  [INFO] Local rank: 0
+
+--- Building FSDP Model ---
+
+--- Running Training Steps ---
+
+--- Verifying Gradient Synchronization ---
+
+--- Checking FSDP Memory Efficiency ---
+worker-1:879312:879312 [1] NCCL INFO comm 0x3fc7a330 rank 3 nranks 4 cudaDev 1 busId 91000 - Destroy COMPLETE
+
+==================================================
+TEST 07: Distributed Training Smoke Test
+==================================================
+
+--- Initializing Distributed Environment ---
+  [INFO] Initializing rank 3/4
+  [INFO] Master: worker-0:29500
+  [INFO] Local rank: 1
+
+--- Building FSDP Model ---
+
+--- Running Training Steps ---
+
+--- Verifying Gradient Synchronization ---
+
+--- Checking FSDP Memory Efficiency ---
+worker-0:879101:879101 [1] NCCL INFO comm 0x178894d0 rank 1 nranks 4 cudaDev 1 busId 91000 - Destroy COMPLETE
+
+==================================================
+TEST 07: Distributed Training Smoke Test
+==================================================
+
+--- Initializing Distributed Environment ---
+  [INFO] Initializing rank 1/4
+  [INFO] Master: worker-0:29500
+  [INFO] Local rank: 1
+
+--- Building FSDP Model ---
+
+--- Running Training Steps ---
+
+--- Verifying Gradient Synchronization ---
+
+--- Checking FSDP Memory Efficiency ---
+Test 07 exit code: 0
+
+============================================================
+VALIDATION JOB COMPLETE
+============================================================
+Job ID:       132
+Completed:    2026-05-10 03:57:38 UTC
+Phase 1:      PASS
+Test 04:      PASS
+Test 07:      PASS
+
+OVERALL RESULT: ALL TESTS PASSED
+Cluster is validated and ready for training
+============================================================
+
+Output saved to: validation_132.out
+Copy to results: cp validation_132.out
+                    ~/nebius-poc/results/validation_report.txt
+

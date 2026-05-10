@@ -1,0 +1,120 @@
+
+==============================================================
+            NEBIUS H200 CLUSTER VALIDATION REPORT
+==============================================================
+    Job ID:                      132
+    Nodes:                       worker-[0-1]
+    Submitted:                   2026-05-10 03:55:30 UTC
+    Completed:                   2026-05-10 03:57:38 UTC
+==============================================================
+
+  01 GPU Health............................. PASS
+  02 CUDA Functionality..................... PASS
+  03 NCCL Intra-Node........................ PASS
+  04 NCCL Inter-Node........................ PASS
+  05 Storage Benchmark...................... PASS
+  06 CPU & RAM.............................. PASS
+  07 Distributed Smoke...................... PASS
+  08 GPU Stress Test........................ PASS
+  09 ECC Monitoring......................... PASS
+  10 Environment Check...................... PASS
+
+==============================================================
+  Total: 10  |  Passed: 10  |  Failed: 0
+==============================================================
+
+  ✓  VERDICT: ALL TESTS PASSED
+     Cluster is validated and ready for training
+
+==============================================================
+
+==============================================================
+  DETAILED FINDINGS PER TEST
+==============================================================
+
+  TEST 01 — GPU Health  [PASS]
+  ----------------------------------------------------------
+    GPU Model:                   NVIDIA H200
+    Memory Per GPU:              140.4 GB
+    Baseline Temp:               28C
+    Driver Version:              570.211.01
+    GPUs Per Node:               2 x H200 visible on both nodes
+
+  TEST 02 — CUDA Functionality  [PASS]
+  ----------------------------------------------------------
+    CUDA Version:                12.4
+    PyTorch Version:             2.6.0+cu124
+    Compute Capability:          9.0
+    Tensor Ops:                  [5.0, 7.0, 9.0] correct on all GPUs
+    1GB Alloc/Free:              PASS on all GPUs
+
+  TEST 03 — NCCL Intra-Node  [PASS]
+  ----------------------------------------------------------
+    NVLink Status:               Active — 18 links at 26.562 GB/s each
+    P2P Access:                  Enabled
+    500MB Bandwidth:             319.5 GB/s
+    Methodology:                 Warmup + best of 3 runs per size
+
+  TEST 04 — NCCL Inter-Node  [PASS]
+  ----------------------------------------------------------
+    InfiniBand State:            Active
+    IB Rate:                     400 Gb/s
+    1024MB AllReduce:            82.9 GB/s
+    Network Latency:             0.022ms
+    IB Interfaces:               8x mlx5 ports active per node (GDRDMA)
+
+  TEST 05 — Storage Benchmark  [PASS]
+  ----------------------------------------------------------
+    /home read:                  0.87 GB/s
+    /mnt/data read:              1.16 GB/s
+    /mnt/memory write:           2.50 GB/s
+    Checkpoint (500MB):          1.00s write time
+    /mnt/data free:              20480 GB (empty)
+
+  TEST 06 — CPU & RAM  [PASS]
+  ----------------------------------------------------------
+    CPU Model:                   Intel(R) Xeon(R) Platinum 8468
+    Physical Cores:              64
+    Total RAM:                   1574.8 GB
+    RAM Bandwidth:               80.0 GB/s
+    DataLoader (8 wkr):          0.039s for 8 workers
+
+  TEST 07 — Distributed Smoke  [PASS]
+  ----------------------------------------------------------
+    NCCL Init:                   4 processes across 2 nodes — SUCCESS
+    FSDP Strategy:               FULL_SHARD (ZeRO-3 equivalent)
+    AllReduce Sum:               6 (expected 6) — gradients correct
+    Training Throughput:         20.9 samples/s
+    FSDP Memory/GPU:             0.15 GB
+    Step Time (warm):            10.2ms
+
+  TEST 08 — GPU Stress Test  [PASS]
+  ----------------------------------------------------------
+    Max Temperature:             60.0C
+    Avg Utilization:             81.2%
+    Peak Power Draw:             694.8W
+    Compute Throughput:          639.8 TFLOPS
+    Post-stress Temp:            41C
+    Duration:                    30s (shared cluster consideration)
+
+  TEST 09 — ECC Monitoring  [PASS]
+  ----------------------------------------------------------
+    Corrected Errors:            0
+    Uncorrected Errors:          0
+    Xid Errors:                  None
+    Row Remapping:               None
+    ECC Mode:                    Enabled on all GPUs
+
+  TEST 10 — Environment  [PASS]
+  ----------------------------------------------------------
+    OS:                          Ubuntu 24.04.3 LTS
+    Kernel:                      6.11.0-1016-nvidia
+    NCCL Version:                (2, 21, 5)
+    Environment Hash:            7c44c529 (identical both nodes)
+    Master Node:                 worker-0
+    Filesystem:                  /home and /mnt/data accessible both nodes
+
+==============================================================
+  Generated: 2026-05-10 04:05:50 UTC
+  Full log:  validation_132.out
+==============================================================
