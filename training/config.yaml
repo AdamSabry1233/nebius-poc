@@ -1,0 +1,169 @@
+# =============================================================
+# config.yaml
+# All hyperparameters for fine-tuning Llama 3.1 8B Instruct
+# on MMLU professional_law using LoRA via TRL + FSDP
+# =============================================================
+
+# ── Model ─────────────────────────────────────────────────────
+model:
+  name: "meta-llama/Llama-3.1-8B-Instruct"
+  # We fine-tune the Instruct version not the raw base model
+  # because it already understands question-answer format
+  # which gives cleaner fine-tuning signal
+
+  torch_dtype: "bfloat16"
+  # bf16 halves memory vs fp32 while maintaining dynamic range
+  # H200 has native bf16 support so no performance penalty
+
+  cache_dir: "/mnt/data/hf_cache"
+  # Cache model weights to 20TB storage not home directory
+  # Llama 3.1 8B = 16GB — only download once
+
+# ── Dataset ───────────────────────────────────────────────────
+dataset:
+  name: "cais/mmlu"
+  subset: "professional_law"
+  # 1500 training examples — most of any MMLU category
+  # Low base model score (~45-50%) — most room to improve
+  # Realistic business use case — legal tech startup
+
+  max_seq_length: 512
+  # Professional law questions fit comfortably in 512 tokens
+  # Longer sequences = more memory = smaller batch size
+
+# ── LoRA Configuration ────────────────────────────────────────
+lora:
+  r: 16
+  # Rank — controls adapter capacity
+  # r=16 is standard for instruction fine-tuning
+  # Balances expressiveness vs overfitting on small dataset
+
+  lora_alpha: 32
+  # Scaling factor = alpha/r = 32/16 = 2.0
+  # Standard convention: alpha = 2x rank
+  # Controls how strongly adapter influences output
+
+  lora_dropout: 0.05
+  # Small dropout prevents overfitting on 1500 examples
+  # 0.05 is conservative — good for structured datasets
+
+  bias: "none"
+  # Don't train bias parameters — not needed for this task
+
+  task_type: "CAUSAL_LM"
+  # We're doing causal language modeling (next token prediction)
+
+  target_modules:
+    # Apply LoRA to all projection layers
+    # Both attention AND MLP for maximum expressiveness
+    - "q_proj"      # query projection in attention
+    - "k_proj"      # key projection in attention
+    - "v_proj"      # value projection in attention
+    - "o_proj"      # output projection in attention
+    - "gate_proj"   # gate in MLP feed-forward
+    - "up_proj"     # up projection in MLP
+    - "down_proj"   # down projection in MLP
+
+# ── Training Arguments ────────────────────────────────────────
+training:
+  output_dir: "/mnt/data/outputs/finetuned-llama"
+  # Save final model to 20TB storage not home directory
+
+  num_train_epochs: 3
+  # 3 epochs standard for instruction fine-tuning
+  # More risks overfitting on 1500 examples
+
+  per_device_train_batch_size: 4
+  # 4 samples per GPU per step
+  # Fits comfortably in H200 memory with LoRA
+
+  per_device_eval_batch_size: 4
+  # Same batch size for evaluation
+
+  gradient_accumulation_steps: 4
+  # Effective batch size = 4 (per GPU) x 4 (accumulation) x 4 (GPUs) = 64
+  # Simulates large batch without memory cost
+  # Mathematically identical to batch size 64
+
+  learning_rate: 0.0002
+  # 2e-4 standard for LoRA fine-tuning
+  # Higher than full fine-tuning (1e-5) because
+  # we're only updating adapter parameters not all weights
+
+  lr_scheduler_type: "cosine"
+  # Cosine decay — smoothly reduces LR over training
+  # Starts at 2e-4, ends near 0
+  # Standard for LLM fine-tuning
+
+  warmup_steps: 100
+  # Gradually increase LR from 0 to 2e-4 over first 100 steps
+  # Prevents instability at start of training
+
+  weight_decay: 0.01
+  # L2 regularization — prevents overfitting
+  # Small value so it doesn't interfere with learning
+
+  max_grad_norm: 1.0
+  # Gradient clipping — prevents exploding gradients
+  # Standard value for LLM training
+
+  bf16: true
+  # Use bfloat16 precision throughout training
+  # Matches model dtype — no conversion overhead
+
+  logging_steps: 10
+  # Log loss, lr, grad norm every 10 steps
+  # Gives you smooth loss curves to monitor
+
+  eval_steps: 50
+  # Run validation every 50 steps
+  # Lets you catch overfitting early
+
+  save_steps: 100
+  # Save checkpoint every 100 steps
+  # If job times out you can resume from last checkpoint
+
+  save_total_limit: 3
+  # Keep only last 3 checkpoints
+  # Saves storage — each checkpoint is ~500MB
+
+  load_best_model_at_end: true
+  # After training load the checkpoint with best eval loss
+  # Not just the final checkpoint — best generalization
+
+  report_to: "none"
+  # Don't report to wandb or tensorboard
+  # Keep it simple for PoC
+
+# ── FSDP Configuration ────────────────────────────────────────
+fsdp:
+  enabled: true
+  sharding_strategy: "FULL_SHARD"
+  # FULL_SHARD = ZeRO-3 equivalent
+  # Shards weights + gradients + optimizer states
+  # across all 4 GPUs
+  # Each GPU holds 1/4 of everything
+
+  cpu_offload: false
+  # Don't offload to CPU — we have plenty of GPU memory
+  # CPU offloading slows training significantly
+
+  backward_prefetch: "BACKWARD_PRE"
+  # Prefetch next layer's parameters during backward pass
+  # Overlaps communication with computation
+  # Improves throughput
+
+  auto_wrap_policy: "transformer_auto_wrap"
+  # Automatically wrap transformer layers with FSDP
+  # Each transformer block becomes its own FSDP unit
+
+# ── Paths ─────────────────────────────────────────────────────
+paths:
+  checkpoint_dir: "/mnt/data/checkpoints"
+  # Intermediate checkpoints during training
+
+  final_model_dir: "/mnt/data/outputs/finetuned-llama"
+  # Final trained model — used by eval.py after training
+
+  log_dir: "/mnt/data/logs"
+  # Training logs
