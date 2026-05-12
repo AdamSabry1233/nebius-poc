@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Model weights and cache
+/mnt/
+*.safetensors
+*.bin
+*.pt
+*.ckpt
+
+# Slurm output files in root
+*.out
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment
+nebius-env/
+.env
