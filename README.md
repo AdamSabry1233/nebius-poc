@@ -1,6 +1,5 @@
 # Nebius H200 Cluster — LLM Fine-Tuning PoC
 
-**Role:** AI/ML Specialist Customer Solution Architect — Take Home Assignment  
 **Cluster:** 2 nodes x 8x H200 GPUs | Partition: earlytalent | QOS: gpulimit
 
 ---
