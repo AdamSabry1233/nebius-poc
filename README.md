@@ -202,7 +202,7 @@ Optimized for throughput rather than latency because the startup is building a m
 
 Grafana:
 
-    ssh -L 3000:metrics-grafana.monitoring-system.svc:80 -N adam@185.82.71.86
+    ssh -L 3000:metrics-grafana.monitoring-system.svc:80 -N user@ip_address
     # Open localhost:3000 in browser
 
 Key panels during training: GPU Utilization, GPU Memory (confirms FSDP sharding), GPU Temperature, InfiniBand Throughput (confirms inter-node gradient sync).
