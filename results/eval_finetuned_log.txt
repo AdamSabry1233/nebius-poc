@@ -1,0 +1,73 @@
+============================================================
+MMLU PROFESSIONAL LAW EVALUATION
+============================================================
+Job ID:      212
+Node:        worker-0
+GPUs:        0,1
+Start time:  2026-05-12 02:34:00 UTC
+============================================================
+
+HF cache directory: /mnt/data/hf_cache
+Model to evaluate:  /mnt/data/outputs/finetuned-mistral
+Model name:         finetuned
+
+Starting evaluation...
+
+2026-05-12:02:34:15 INFO     [_cli.run:376] Selected Tasks: ['mmlu_professional_law']
+2026-05-12:02:34:15 WARNING  [evaluator:181] pretrained=mistralai/Mistral-7B-Instruct-v0.3 appears to be an instruct or chat variant but chat template is not applied. Recommend setting
+        `apply_chat_template` (optionally `fewshot_as_multiturn`).
+2026-05-12:02:34:18 INFO     [evaluator:211] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234 | Setting fewshot manual seed to 1234
+2026-05-12:02:34:18 INFO     [evaluator:236] Initializing hf model, with arguments: {'pretrained': 'mistralai/Mistral-7B-Instruct-v0.3', 'peft': '/mnt/data/outputs/finetuned-mistral'}
+2026-05-12:02:34:25 INFO     [models.huggingface:161] Using device 'cuda:0'
+2026-05-12:02:34:26 INFO     [models.huggingface:423] Model parallel was set to False, max memory was not set, and device map was set to {'': 'cuda:0'}
+Loading weights:   0%|          | 0/291 [00:00<?, ?it/s]Loading weights:   0%|          | 1/291 [00:00<00:53,  5.47it/s]Loading weights:   2%|▏         | 6/291 [00:00<00:12, 23.13it/s]Loading weights:   5%|▍         | 14/291 [00:00<00:06, 42.80it/s]Loading weights:   7%|▋         | 19/291 [00:00<00:06, 43.00it/s]Loading weights:  10%|▉         | 28/291 [00:00<00:05, 49.80it/s]Loading weights:  13%|█▎        | 37/291 [00:00<00:04, 52.41it/s]Loading weights:  16%|█▌        | 47/291 [00:00<00:03, 63.39it/s]Loading weights:  19%|█▊        | 54/291 [00:01<00:03, 61.52it/s]Loading weights:  21%|██        | 61/291 [00:01<00:04, 57.46it/s]Loading weights:  24%|██▎       | 69/291 [00:01<00:03, 58.10it/s]Loading weights:  26%|██▋       | 77/291 [00:01<00:03, 62.78it/s]Loading weights:  29%|██▉       | 84/291 [00:01<00:03, 63.18it/s]Loading weights:  31%|███▏      | 91/291 [00:01<00:03, 64.85it/s]Loading weights:  34%|███▎      | 98/291 [00:01<00:03, 62.97it/s]Loading weights:  36%|███▌      | 105/291 [00:01<00:03, 59.38it/s]Loading weights:  39%|███▉      | 113/291 [00:02<00:02, 64.21it/s]Loading weights:  41%|████      | 120/291 [00:02<00:02, 64.97it/s]Loading weights:  44%|████▎     | 127/291 [00:02<00:02, 64.57it/s]Loading weights:  46%|████▌     | 134/291 [00:02<00:02, 62.62it/s]Loading weights:  48%|████▊     | 141/291 [00:02<00:02, 57.51it/s]Loading weights:  52%|█████▏    | 150/291 [00:02<00:02, 58.73it/s]Loading weights:  55%|█████▍    | 159/291 [00:02<00:02, 60.11it/s]Loading weights:  57%|█████▋    | 167/291 [00:02<00:02, 59.41it/s]Loading weights:  61%|██████    | 177/291 [00:03<00:01, 63.34it/s]Loading weights:  64%|██████▍   | 186/291 [00:03<00:01, 64.50it/s]Loading weights:  67%|██████▋   | 194/291 [00:03<00:01, 68.04it/s]Loading weights:  69%|██████▉   | 202/291 [00:03<00:01, 70.99it/s]Loading weights:  72%|███████▏  | 210/291 [00:03<00:01, 71.98it/s]Loading weights:  75%|███████▍  | 218/291 [00:03<00:01, 66.96it/s]Loading weights:  77%|███████▋  | 225/291 [00:03<00:01, 65.47it/s]Loading weights:  80%|███████▉  | 232/291 [00:03<00:00, 61.36it/s]Loading weights:  82%|████████▏ | 240/291 [00:04<00:00, 59.51it/s]Loading weights:  85%|████████▌ | 248/291 [00:04<00:00, 64.47it/s]Loading weights:  88%|████████▊ | 256/291 [00:04<00:00, 68.46it/s]Loading weights:  91%|█████████ | 264/291 [00:04<00:00, 62.91it/s]Loading weights:  93%|█████████▎| 272/291 [00:04<00:00, 61.79it/s]Loading weights:  96%|█████████▌| 280/291 [00:04<00:00, 60.29it/s]Loading weights: 100%|██████████| 291/291 [00:04<00:00, 61.29it/s]
+2026-05-12:02:34:36 INFO     [tasks:700] Selected tasks:
+2026-05-12:02:34:36 INFO     [tasks:691] Task: mmlu_professional_law (mmlu/default/mmlu_professional_law.yaml)
+2026-05-12:02:34:36 WARNING  [evaluator:333] Overwriting default num_fewshot of mmlu_professional_law from None to 5
+2026-05-12:02:34:36 INFO     [api.task:311] Building contexts for mmlu_professional_law on rank 0...
+  0%|          | 0/1534 [00:00<?, ?it/s]  0%|          | 1/1534 [00:00<04:26,  5.75it/s]  2%|▏         | 24/1534 [00:00<00:14, 105.44it/s]  3%|▎         | 47/1534 [00:00<00:09, 152.27it/s]  5%|▍         | 70/1534 [00:00<00:08, 177.06it/s]  6%|▌         | 93/1534 [00:00<00:07, 192.12it/s]  7%|▋         | 115/1534 [00:00<00:07, 198.68it/s]  9%|▉         | 137/1534 [00:00<00:06, 204.07it/s] 10%|█         | 160/1534 [00:00<00:06, 210.37it/s] 12%|█▏        | 183/1534 [00:00<00:06, 214.13it/s] 13%|█▎        | 206/1534 [00:01<00:06, 216.81it/s] 15%|█▍        | 229/1534 [00:01<00:05, 217.94it/s] 16%|█▋        | 252/1534 [00:01<00:05, 219.84it/s] 18%|█▊        | 275/1534 [00:01<00:05, 221.80it/s] 19%|█▉        | 298/1534 [00:01<00:05, 223.42it/s] 21%|██        | 321/1534 [00:01<00:05, 224.49it/s] 22%|██▏       | 344/1534 [00:01<00:05, 224.50it/s] 24%|██▍       | 367/1534 [00:01<00:05, 225.23it/s] 25%|██▌       | 390/1534 [00:01<00:05, 225.15it/s] 27%|██▋       | 413/1534 [00:02<00:04, 226.07it/s] 28%|██▊       | 436/1534 [00:02<00:04, 226.73it/s] 30%|██▉       | 459/1534 [00:02<00:04, 226.61it/s] 31%|███▏      | 482/1534 [00:02<00:04, 226.51it/s] 33%|███▎      | 505/1534 [00:02<00:04, 227.19it/s] 34%|███▍      | 528/1534 [00:02<00:04, 227.39it/s] 36%|███▌      | 551/1534 [00:02<00:04, 227.12it/s] 37%|███▋      | 574/1534 [00:02<00:04, 224.73it/s] 39%|███▉      | 597/1534 [00:02<00:04, 225.18it/s] 40%|████      | 620/1534 [00:02<00:04, 225.81it/s] 42%|████▏     | 643/1534 [00:03<00:03, 226.07it/s] 43%|████▎     | 666/1534 [00:03<00:03, 226.25it/s] 45%|████▍     | 689/1534 [00:03<00:03, 225.29it/s] 46%|████▋     | 712/1534 [00:03<00:03, 225.35it/s] 48%|████▊     | 735/1534 [00:03<00:03, 225.65it/s] 49%|████▉     | 758/1534 [00:03<00:03, 225.63it/s] 51%|█████     | 781/1534 [00:03<00:03, 218.37it/s] 52%|█████▏    | 803/1534 [00:03<00:03, 217.51it/s] 54%|█████▍    | 826/1534 [00:03<00:03, 220.69it/s] 55%|█████▌    | 849/1534 [00:03<00:03, 223.17it/s] 57%|█████▋    | 872/1534 [00:04<00:02, 223.14it/s] 58%|█████▊    | 895/1534 [00:04<00:02, 223.34it/s] 60%|█████▉    | 918/1534 [00:04<00:02, 223.82it/s] 61%|██████▏   | 941/1534 [00:04<00:02, 224.82it/s] 63%|██████▎   | 964/1534 [00:04<00:02, 223.01it/s] 64%|██████▍   | 987/1534 [00:04<00:02, 221.39it/s] 66%|██████▌   | 1010/1534 [00:04<00:02, 221.96it/s] 67%|██████▋   | 1033/1534 [00:04<00:02, 222.53it/s] 69%|██████▉   | 1056/1534 [00:04<00:02, 223.84it/s] 70%|███████   | 1079/1534 [00:04<00:02, 224.95it/s] 72%|███████▏  | 1102/1534 [00:05<00:01, 226.27it/s] 73%|███████▎  | 1125/1534 [00:05<00:01, 226.77it/s] 75%|███████▍  | 1148/1534 [00:05<00:01, 227.19it/s] 76%|███████▋  | 1171/1534 [00:05<00:01, 227.34it/s] 78%|███████▊  | 1194/1534 [00:05<00:01, 227.22it/s] 79%|███████▉  | 1217/1534 [00:05<00:01, 227.47it/s] 81%|████████  | 1240/1534 [00:05<00:01, 227.58it/s] 82%|████████▏ | 1263/1534 [00:05<00:01, 226.99it/s] 84%|████████▍ | 1286/1534 [00:05<00:01, 226.80it/s] 85%|████████▌ | 1309/1534 [00:06<00:00, 226.99it/s] 87%|████████▋ | 1332/1534 [00:06<00:00, 227.51it/s] 88%|████████▊ | 1355/1534 [00:06<00:00, 227.77it/s] 90%|████████▉ | 1378/1534 [00:06<00:00, 227.85it/s] 91%|█████████▏| 1401/1534 [00:06<00:00, 228.06it/s] 93%|█████████▎| 1424/1534 [00:06<00:00, 227.87it/s] 94%|█████████▍| 1447/1534 [00:06<00:00, 227.97it/s] 96%|█████████▌| 1470/1534 [00:06<00:00, 227.89it/s] 97%|█████████▋| 1493/1534 [00:06<00:00, 227.55it/s] 99%|█████████▉| 1516/1534 [00:06<00:00, 227.70it/s]100%|██████████| 1534/1534 [00:06<00:00, 219.44it/s]
+2026-05-12:02:34:43 INFO     [evaluator:584] Running loglikelihood requests
+Running loglikelihood requests:   0%|          | 0/6136 [00:00<?, ?it/s]Running loglikelihood requests:   0%|          | 1/6136 [00:44<76:33:34, 44.92s/it]Running loglikelihood requests:   4%|▍         | 257/6136 [00:51<14:27,  6.78it/s] Running loglikelihood requests:   8%|▊         | 513/6136 [00:57<07:02, 13.32it/s]Running loglikelihood requests:  13%|█▎        | 769/6136 [01:03<04:37, 19.35it/s]Running loglikelihood requests:  17%|█▋        | 1025/6136 [01:09<03:27, 24.66it/s]Running loglikelihood requests:  21%|██        | 1281/6136 [01:15<02:46, 29.16it/s]Running loglikelihood requests:  25%|██▌       | 1537/6136 [01:21<02:20, 32.84it/s]Running loglikelihood requests:  29%|██▉       | 1793/6136 [01:27<02:01, 35.73it/s]Running loglikelihood requests:  33%|███▎      | 2049/6136 [01:33<01:47, 37.97it/s]Running loglikelihood requests:  38%|███▊      | 2305/6136 [01:38<01:36, 39.72it/s]Running loglikelihood requests:  42%|████▏     | 2561/6136 [01:44<01:26, 41.12it/s]Running loglikelihood requests:  46%|████▌     | 2817/6136 [01:50<01:18, 42.23it/s]Running loglikelihood requests:  50%|█████     | 3073/6136 [01:56<01:10, 43.15it/s]Running loglikelihood requests:  54%|█████▍    | 3329/6136 [02:01<01:04, 43.85it/s]Running loglikelihood requests:  58%|█████▊    | 3585/6136 [02:07<00:57, 44.43it/s]Running loglikelihood requests:  63%|██████▎   | 3841/6136 [02:12<00:51, 44.90it/s]Running loglikelihood requests:  67%|██████▋   | 4097/6136 [02:18<00:44, 45.35it/s]Running loglikelihood requests:  71%|███████   | 4353/6136 [02:23<00:39, 45.71it/s]Running loglikelihood requests:  75%|███████▌  | 4609/6136 [02:29<00:33, 45.98it/s]Running loglikelihood requests:  79%|███████▉  | 4865/6136 [02:34<00:27, 46.30it/s]Running loglikelihood requests:  83%|████████▎ | 5121/6136 [02:40<00:21, 46.55it/s]Running loglikelihood requests:  88%|████████▊ | 5377/6136 [02:45<00:16, 46.83it/s]Running loglikelihood requests:  92%|█████████▏| 5633/6136 [02:50<00:10, 47.24it/s]Running loglikelihood requests:  96%|█████████▌| 5889/6136 [02:55<00:05, 48.27it/s]Running loglikelihood requests: 100%|██████████| 6136/6136 [02:55<00:00, 34.88it/s]
+2026-05-12:02:38:06 INFO     [loggers.evaluation_tracker:247] Saving results aggregated
+2026-05-12:02:38:06 INFO     [loggers.evaluation_tracker:119] Saving per-task samples to /home/adam/nebius-poc/results/*.jsonl
+Passed argument batch_size = auto:1. Detecting largest batch size
+Determined largest batch size: 64
+hf ({'pretrained': 'mistralai/Mistral-7B-Instruct-v0.3', 'peft': '/mnt/data/outputs/finetuned-mistral'}), gen_kwargs: ({}), limit: None, num_fewshot: 5, batch_size: auto (64)
+|     Tasks      |Version|Filter|n-shot|Metric|   |Value |   |Stderr|
+|----------------|------:|------|-----:|------|---|-----:|---|-----:|
+|professional_law|      1|none  |     5|acc   |↑  |0.5463|±  |0.0127|
+
+
+============================================================
+EVALUATING MODEL: /mnt/data/outputs/finetuned-mistral
+Task:             mmlu_professional_law
+Few-shot:         5
+Output:           /home/adam/nebius-poc/results/eval_finetuned_20260512_023401.json
+============================================================
+
+Running command:
+lm_eval --model hf --model_args pretrained=mistralai/Mistral-7B-Instruct-v0.3,peft=/mnt/data/outputs/finetuned-mistral --tasks mmlu_professional_law --num_fewshot 5 --batch_size auto --output_path /home/adam/nebius-poc/results/eval_finetuned_20260512_023401.json --log_samples
+
+
+[PASS] Evaluation complete
+Results saved to: /home/adam/nebius-poc/results/eval_finetuned_20260512_023401.json
+[WARN] Could not parse results file: [Errno 2] No such file or directory: '/home/adam/nebius-poc/results/eval_finetuned_20260512_023401.json'
+
+Done. Run eval_report.py to compare all model results.
+
+============================================================
+EVALUATION COMPLETE
+============================================================
+Job ID:      212
+Model:       /mnt/data/outputs/finetuned-mistral
+End time:    2026-05-12 02:38:08 UTC
+Exit code:   0
+
+STATUS: PASS — evaluation completed successfully
+
+Results saved to: ~/nebius-poc/results/
+
+Next steps:
+  1. Run eval_report.py to compare all model scores
+  2. Submit training job: sbatch train.sbatch
+============================================================

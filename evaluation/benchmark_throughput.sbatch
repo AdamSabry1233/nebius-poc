@@ -19,12 +19,11 @@ echo "Start:     $(date '+%Y-%m-%d %H:%M:%S UTC')"
 echo "============================================================"
 
 source ~/nebius-env/bin/activate
-
 export HF_HOME=/mnt/data/hf_cache
 export TOKENIZERS_PARALLELISM=false
 
 python3 ~/nebius-poc/evaluation/benchmark_throughput.py \
-    --model_path  /mnt/data/outputs/finetuned-llama \
+    --model_path  /mnt/data/outputs/finetuned-mistral \
     --output_dir  ~/nebius-poc/results \
     --batch_sizes 1 2 4 8 16 32 64 \
     --input_length  128 \

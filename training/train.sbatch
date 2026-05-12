@@ -102,8 +102,8 @@ echo ""
 # --rdzv_backend=c10d   → rendezvous backend for process discovery
 #                         c10d uses PyTorch's built-in coordination
 
-srun --ntasks=4 \
-     --ntasks-per-node=2 \
+srun --ntasks=2 \
+     --ntasks-per-node=1 \
      bash -c "
          torchrun \
              --nproc_per_node=2 \
@@ -111,7 +111,6 @@ srun --ntasks=4 \
              --node_rank=\$SLURM_NODEID \
              --master_addr=$MASTER_ADDR \
              --master_port=$MASTER_PORT \
-             --rdzv_backend=c10d \
              ~/nebius-poc/training/train.py
      "
 

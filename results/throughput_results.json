@@ -1,0 +1,64 @@
+{
+  "results": [
+    {
+      "batch_size": 1,
+      "throughput_tokens": 22.87229796348113,
+      "throughput_requests": 7.624099321160377,
+      "latency_ms": 131.16303419927135,
+      "total_output_tokens": 300,
+      "elapsed_seconds": 13.116303419927135
+    },
+    {
+      "batch_size": 2,
+      "throughput_tokens": 42.53930022309378,
+      "throughput_requests": 14.179766741031262,
+      "latency_ms": 70.52302187075838,
+      "total_output_tokens": 300,
+      "elapsed_seconds": 7.0523021870758384
+    },
+    {
+      "batch_size": 4,
+      "throughput_tokens": 84.94860609293298,
+      "throughput_requests": 28.316202030977657,
+      "latency_ms": 35.31547058839351,
+      "total_output_tokens": 300,
+      "elapsed_seconds": 3.531547058839351
+    },
+    {
+      "batch_size": 8,
+      "throughput_tokens": 159.73664879412857,
+      "throughput_requests": 53.24554959804286,
+      "latency_ms": 18.780912349466234,
+      "total_output_tokens": 300,
+      "elapsed_seconds": 1.8780912349466234
+    },
+    {
+      "batch_size": 16,
+      "throughput_tokens": 258.902220778769,
+      "throughput_requests": 86.30074025958967,
+      "latency_ms": 11.587386121973395,
+      "total_output_tokens": 300,
+      "elapsed_seconds": 1.1587386121973395
+    },
+    {
+      "batch_size": 32,
+      "throughput_tokens": 348.4930606619201,
+      "throughput_requests": 116.16435355397336,
+      "latency_ms": 8.608492789790034,
+      "total_output_tokens": 300,
+      "elapsed_seconds": 0.8608492789790034
+    },
+    {
+      "batch_size": 64,
+      "throughput_tokens": 516.0664472800028,
+      "throughput_requests": 172.02214909333426,
+      "latency_ms": 5.813204899895936,
+      "total_output_tokens": 300,
+      "elapsed_seconds": 0.5813204899895936
+    }
+  ],
+  "optimal_batch_size": 64,
+  "model_path": "/mnt/data/outputs/finetuned-mistral",
+  "engine": "huggingface",
+  "timestamp": "2026-05-12T03:26:21.771451"
+}

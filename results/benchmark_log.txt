@@ -1,0 +1,70 @@
+============================================================
+INFERENCE THROUGHPUT BENCHMARK
+============================================================
+Job ID:    218
+Node:      worker-0
+Start:     2026-05-12 03:25:36 UTC
+============================================================
+
+============================================================
+INFERENCE THROUGHPUT BENCHMARK (HuggingFace)
+Note: vLLM incompatible with cluster NCCL/CUDA versions
+Production deployment would use vLLM for 2-4x higher throughput
+============================================================
+Model:        /mnt/data/outputs/finetuned-mistral
+Batch sizes:  [1, 2, 4, 8, 16, 32, 64]
+Output tokens:128
+============================================================
+
+Loading base model + LoRA adapter...
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:02<00:04,  2.21s/it]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:04<00:02,  2.18s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:06<00:00,  2.07s/it]Loading checkpoint shards: 100%|██████████| 3/3 [00:06<00:00,  2.11s/it]
+Starting from v4.46, the `logits` model output will have the same type as the model (except at train time, where it will always be FP32)
+[PASS] Model loaded on cuda:0
+
+Running throughput benchmark...
+  Batch size   1: 22.9 tok/s  7.62 req/s  131.2ms/req
+  Batch size   2: 42.5 tok/s  14.18 req/s  70.5ms/req
+  Batch size   4: 84.9 tok/s  28.32 req/s  35.3ms/req
+  Batch size   8: 159.7 tok/s  53.25 req/s  18.8ms/req
+  Batch size  16: 258.9 tok/s  86.30 req/s  11.6ms/req
+  Batch size  32: 348.5 tok/s  116.16 req/s  8.6ms/req
+  Batch size  64: 516.1 tok/s  172.02 req/s  5.8ms/req
+
+==============================================================
+  INFERENCE THROUGHPUT BENCHMARK REPORT
+==============================================================
+  Model:     /mnt/data/outputs/finetuned-mistral
+  Engine:    HuggingFace (vLLM incompatible with cluster)
+  Note:      vLLM would provide 2-4x higher throughput
+             in production on compatible infrastructure
+  Generated: 2026-05-12 03:26 UTC
+==============================================================
+
+   Batch      Throughput     Req/s     Latency
+  ----------------------------------------------------------
+       1         22.9 t/s    7.62 r/s     131.2ms
+       2         42.5 t/s   14.18 r/s      70.5ms
+       4         84.9 t/s   28.32 r/s      35.3ms
+       8        159.7 t/s   53.25 r/s      18.8ms
+      16        258.9 t/s   86.30 r/s      11.6ms
+      32        348.5 t/s  116.16 r/s       8.6ms
+      64        516.1 t/s  172.02 r/s       5.8ms ← optimal
+  ----------------------------------------------------------
+
+==============================================================
+  KEY FINDING
+==============================================================
+  Optimal batch size:  64
+  Peak throughput:     516.1 tokens/second
+  Request rate:        172.02 requests/second
+  Avg latency:         5.8ms per request
+  Est. concurrent users: ~5
+  (200 tok avg response, 2s acceptable wait)
+
+==============================================================
+
+JSON:   /home/adam/nebius-poc/results/throughput_results.json
+Report: /home/adam/nebius-poc/results/throughput_report.txt
+
+Benchmark complete.
+Results: ~/nebius-poc/results/throughput_report.txt

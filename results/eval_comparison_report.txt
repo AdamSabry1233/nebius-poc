@@ -1,0 +1,66 @@
+
+====================================================================
+          MMLU PROFESSIONAL LAW — MODEL COMPARISON REPORT
+====================================================================
+  Task:        mmlu_professional_law
+  Evaluation:  5-shot (standard MMLU methodology)
+  Tool:        EleutherAI lm-evaluation-harness
+  Generated:   2026-05-12 02:38:44 UTC
+====================================================================
+
+  Model                                 Accuracy    Std Err      Delta
+  ----------------------------------------------------------------
+  Mistral 7B (raw)                        45.96%     ±1.27%   baseline
+  Mistral 7B Instruct                     46.22%     ±1.27%    +0.26pp
+  Mistral 7B Fine-tuned                   54.63%     ±1.27%    +8.67pp
+  ----------------------------------------------------------------
+  pp = percentage points
+
+====================================================================
+  KEY FINDING
+====================================================================
+
+  Fine-tuning improved professional_law accuracy by 8.67 percentage points
+  over the raw base model (45.96% → 54.63%)
+
+  Over instruct baseline: +8.41 percentage points
+  (46.22% → 54.63%)
+
+  Statistical significance: YES — improvement exceeds 2x standard error
+
+====================================================================
+  CONTEXT
+====================================================================
+
+  Random guessing (4 choices) = 25.00%
+  Human expert performance    = ~70-75%
+
+  Raw model is 21.0pp above random guessing
+  Fine-tuning added 8.7pp of domain-specific knowledge
+
+====================================================================
+  METHODOLOGY
+====================================================================
+
+  Tool:    EleutherAI lm-evaluation-harness
+  Scoring: Log-likelihood — more reliable than
+           generation-based scoring. Eliminates
+           randomness, gives reproducible results.
+
+  5-shot:  Each question shown with 5 examples.
+           Standard MMLU protocol used by Meta,
+           Google, and Microsoft for benchmarking.
+
+  Test set: Held-out questions never seen during
+            fine-tuning. Clean train/test split
+            prevents data leakage.
+
+====================================================================
+  SOURCE FILES
+====================================================================
+
+  ✓  results/eval_baseline_raw_20260512_005007_2026-05-12T00-53-31.455752.json
+  ✓  results/eval_baseline_instruct_20260512_010200_2026-05-12T01-05-21.688142.json
+  ✓  results/eval_finetuned_20260512_023401_2026-05-12T02-38-06.826445.json
+
+====================================================================

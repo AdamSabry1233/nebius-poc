@@ -97,7 +97,12 @@ def run_evaluation(model_path, model_name, output_dir, num_fewshot, batch_size):
     cmd = [
         "lm_eval",
         "--model", "hf",                           # use HuggingFace model
-        "--model_args", f"pretrained={model_path}",# which model to load
+        "--model_args", (
+            f"pretrained=mistralai/Mistral-7B-Instruct-v0.3,peft={model_path}"
+            if os.path.isdir(model_path) and 
+            os.path.exists(os.path.join(model_path, "adapter_config.json"))
+            else f"pretrained={model_path}"
+),
         "--tasks", "mmlu_professional_law",         # which benchmark to run
         "--num_fewshot", str(num_fewshot),          # 5-shot is MMLU standard
         "--batch_size", batch_size,                 # how many examples per batch
