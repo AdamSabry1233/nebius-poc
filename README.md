@@ -13,9 +13,9 @@ This covers three things: proving the cluster hardware is healthy, showing that 
 ---
 
 ## Results
-| Fine-tuned model | [asabry1233/mistral-7b-professional-law](https://huggingface.co/asabry1233/mistral-7b-professional-law) |
+| |  |
 | | |
-|---|---|
+| Fine-tuned model| [asabry1233/mistral-7b-professional-law](https://huggingface.co/asabry1233/mistral-7b-professional-law) |
 | Cluster validation | 10/10 tests passed |
 | Raw baseline | 45.96% on MMLU professional_law |
 | Instruct baseline | 46.22% on MMLU professional_law |
