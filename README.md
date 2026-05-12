@@ -29,6 +29,8 @@ The short version: Meta's general instruction tuning added essentially nothing o
 ---
 
 ## Repo Structure
+
+```
 nebius-poc/
 +-- validation/              # 10-test cluster validation suite
 |   +-- tests/               # Individual test scripts (01-10)
@@ -44,7 +46,7 @@ nebius-poc/
 |
 +-- evaluation/              # Eval and benchmarking
 |   +-- eval.py              # lm-eval wrapper
-|   +-- eval.sbatch          # Slurm eval job (base + instruct models)
+|   +-- eval.sbatch          # Slurm eval job
 |   +-- eval_finetuned.sbatch
 |   +-- eval_report.py       # Three-model comparison table
 |   +-- benchmark_throughput.py
@@ -52,8 +54,7 @@ nebius-poc/
 |
 +-- results/                 # All outputs saved here
 +-- setup_env.sh             # Automated environment setup
-
----
+```
 
 ## Setup
 
