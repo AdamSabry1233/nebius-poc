@@ -76,6 +76,11 @@ Requirements:
     mkdir -p /mnt/data/hf_cache /mnt/data/outputs \
              /mnt/data/checkpoints /mnt/data/logs
 
+  For automated environment setup:
+    bash setup_env.sh
+
+Creates the virtual environment, installs CUDA-enabled PyTorch and all required dependencies automatically.
+
 ---
 
 ## Stage 1 — Cluster Validation
