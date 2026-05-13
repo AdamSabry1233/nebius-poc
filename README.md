@@ -24,7 +24,7 @@ This covers three things: proving the cluster hardware is healthy, showing that 
 | Training time | ~17 minutes on 4x H200s |
 | Fine-tuned model | [asabry1233/mistral-7b-professional-law](https://huggingface.co/asabry1233/mistral-7b-professional-law) |
 
-The short version: Meta's general instruction tuning added essentially nothing on legal knowledge (+0.26pp). Domain fine-tuning added 8.67 percentage points. That gap is the whole point of this exercise.
+The short version: Mistral's general instruction tuning added essentially nothing on legal knowledge (+0.26pp). Domain fine-tuning added 8.67 percentage points. That gap is the whole point of this exercise.
 
 ---
 
