@@ -169,7 +169,7 @@ Llama 3.1 requires manual approval from Meta that can take hours to days. Mistra
 
 **Dataset: cais/mmlu professional_law**
 
-Three reasons: 1534 examples — the most of any MMLU category. Base model scores only ~46% — most room to improve. Legal domain fine-tuning is a directly relevant startup use case.
+Three reasons: 1534 examples. Base model scores only ~46% — most room to improve. Legal domain fine-tuning is a directly relevant startup use case.
 
 **Fine-tuning: LoRA**
 
